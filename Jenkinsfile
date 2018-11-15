@@ -1,5 +1,5 @@
 pipeline{
-    agent{label any}
+    agent{label 'vmsiqacloud02'}
     stages{
         stage('test'){
             steps{
