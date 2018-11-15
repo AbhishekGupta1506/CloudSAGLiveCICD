@@ -1,5 +1,5 @@
 pipeline{
-    agent{label 'vmsiqacloud02'}
+    agent{label 'DesignerWin'}
     stages{
         stage('test'){
             steps{
