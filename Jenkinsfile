@@ -22,7 +22,6 @@ pipeline{
                                 }
                             } else {
                                 echo 'Assets directory exist'
-                                bat 'echo $userHome'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){
                                     echo 'pulling the update'                              
                                     bat 'git pull'
