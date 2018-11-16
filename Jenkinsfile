@@ -49,7 +49,7 @@ pipeline{
         stage('Deploy'){
             //update this step to deploy to Clour LAR/GIT once it is stable
             steps{
-                sshagent(credentials : ['AbhishekJenkinsGIT']){
+                sshagent(credentials : ['AccessGitFromvmsiqacloud02']){
                     dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){
                         bat 'git init'
                         bat 'git remote add origin https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
