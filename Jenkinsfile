@@ -32,8 +32,10 @@ pipeline{
         stage('Build'){
             steps{
                 script{
+                    bat 'dir'
                     if (!fileExists('AssetsBuild')) {
                         echo 'clean up the AssetsBuild folder'
+                        
                         bat 'RMDIR AssetsBuild /S /q'
                     }
                     dir('C:/SoftwareAG103/common/AssetBuildEnvironment/bin'){
