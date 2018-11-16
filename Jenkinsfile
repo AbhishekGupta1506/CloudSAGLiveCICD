@@ -18,29 +18,12 @@ pipeline{
                                 echo 'Assets directory exist'
                             }
                             dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){                               
-                                bat 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                                bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
                             }
-                            }
-                            
-                            
+                            }                                                        
                             }
                     }
-                    stage('CheckOut Config'){
-                        steps{
-                            script{
-                                if (!fileExists('Config')) {
-                                bat 'mkdir Config'
-                                echo 'Config directory created under ${customWorkspace}'
-                            } else {
-                                echo 'Config directory exist'
-                            }
-                            dir('C:/CloudTransformation/SAGLiveWorkspace/Config'){
-                                bat 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveConfig.git'
-                            }
-                            }
-                            
-                        }
-                    }
+
                 }
         }        
     }
