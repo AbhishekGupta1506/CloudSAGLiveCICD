@@ -18,7 +18,7 @@ pipeline{
                                     bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
                                 }
                             } else {
-                                echo 'Assets directory exist c:%homepath%'
+                                echo 'Assets directory exist c:' %homepath%
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){
                                     echo 'pulling the update'                              
                                     bat 'git pull'
