@@ -6,9 +6,6 @@ pipeline{
             }
         }
     stages{
-        stage('cleanup'){
-
-        }
         stage('CheckOut'){
             parallel{
                     stage('CheckOut Assets'){
