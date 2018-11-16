@@ -6,7 +6,7 @@ pipeline{
             }
         }
     stages{
-        stage{
+        stage('CheckOut'){
             parallel{
                     stage('CheckOut Assets'){
                         steps{
