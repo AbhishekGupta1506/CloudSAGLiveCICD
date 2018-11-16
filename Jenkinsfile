@@ -6,7 +6,7 @@ pipeline{
             }
         }
     environment {
-        userHome="C:" + %homepath%
+        userHome="C: + %homepath%"
     }
     stages{
         stage('CheckOut'){
@@ -21,7 +21,7 @@ pipeline{
                                     bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
                                 }
                             } else {
-                                echo 'Assets directory exist ${userHome}'
+                                echo 'Assets directory exist ${env.userHome}'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){
                                     echo 'pulling the update'                              
                                     bat 'git pull'
