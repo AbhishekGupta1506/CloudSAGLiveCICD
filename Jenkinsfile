@@ -2,7 +2,7 @@ pipeline{
     agent{
         node{
             label 'DesignerWin'
-            customWorkspace 'C:/CloudTransformation/SAGLiveWorkspace'
+            //customWorkspace 'C:/CloudTransformation/SAGLiveWorkspace'
             }
         }
     stages{
