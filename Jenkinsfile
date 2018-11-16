@@ -35,8 +35,9 @@ pipeline{
                     bat 'dir'
                     if (fileExists('AssetsBuild')) {
                         echo 'clean up the AssetsBuild folder'
-                        
-                        bat 'RMDIR AssetsBuild /S /q'
+                        dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){
+                             bat 'del /s /q *'
+                        }
                     }
                     dir('C:/SoftwareAG103/common/AssetBuildEnvironment/bin'){
                         bat 'build.bat'
