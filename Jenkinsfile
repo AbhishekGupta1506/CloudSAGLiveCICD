@@ -2,13 +2,21 @@ pipeline{
     agent{
         node{
             label 'DesignerWin'
-            customWorkspace 'C:/CloudTransformation/workspace1'
+            customWorkspace 'C:/CloudTransformation/SAGLiveWorkspace'
             }
         }
     stages{
-        stage('test'){
-            steps{
-            echo "hello"
+        parallel{
+            stage('CheckOut Assets'){
+                steps{
+                    sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                    }
+            }
+            stage('CheckOut Config'){
+                steps{
+                    sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveConfig.git'
+                }
+
             }
         }
     }
