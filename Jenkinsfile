@@ -2,7 +2,7 @@ pipeline{
     agent{
         node{
             label 'DesignerWin'
-            //customWorkspace 'C:/CloudTransformation/SAGLiveWorkspace'
+            customWorkspace 'C:/CloudTransformation/SAGLiveWorkspace'
             }
         }
     stages{
@@ -10,12 +10,17 @@ pipeline{
             parallel{
                     stage('CheckOut Assets'){
                         steps{
-                            sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                            dir('C:/CloudTransformation/Assets'){
+                                sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                            }
+                            
                             }
                     }
                     stage('CheckOut Config'){
                         steps{
-                            sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveConfig.git'
+                            dir('C:/CloudTransformation/Config'){
+                             sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveConfig.git'
+                            }
                         }
                     }
                 }
