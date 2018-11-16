@@ -33,7 +33,7 @@ pipeline{
             steps{
                 script{
                     bat 'dir'
-                    if (!fileExists('AssetsBuild')) {
+                    if (fileExists('AssetsBuild')) {
                         echo 'clean up the AssetsBuild folder'
                         
                         bat 'RMDIR AssetsBuild /S /q'
