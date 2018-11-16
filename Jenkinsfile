@@ -6,6 +6,9 @@ pipeline{
             }
         }
     stages{
+        stage('cleanup'){
+
+        }
         stage('CheckOut'){
             parallel{
                     stage('CheckOut Assets'){
@@ -13,13 +16,19 @@ pipeline{
                             script{
                                 if (!fileExists('Assets')) {
                                 bat 'mkdir Assets'
-                                echo 'Assets directory created under ${customWorkspace}'
+                                dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){ 
+                                    echo 'cloning the project'                              
+                                    bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                                }
                             } else {
                                 echo 'Assets directory exist'
+                                dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){
+                                    echo 'pulling the update'                              
+                                    bat 'git pull'
+                                    bat 'git submodule update'
+                                }
                             }
-                            dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){                               
-                                bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
-                            }
+                            
                             }                                                        
                             }
                     }
