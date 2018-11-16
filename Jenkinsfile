@@ -17,7 +17,7 @@ pipeline{
                             } else {
                                 echo 'Assets directory exist'
                             }
-                            dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){
+                            dir('C:/CloudTransformation/Assets'){
                                 
                                 sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
                             }
@@ -35,7 +35,7 @@ pipeline{
                             } else {
                                 echo 'Config directory exist'
                             }
-                            dir('C:/CloudTransformation/SAGLiveWorkspace/Config'){
+                            dir('C:/CloudTransformation/Config'){
                              sh 'git clone --recursive https://github.com/AbhishekGupta1506/CloudSAGLiveConfig.git'
                             }
                             }
