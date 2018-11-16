@@ -1,7 +1,9 @@
 pipeline{
     agent{
-        label 'DesignerWin'
-        customWorkspace 'C:/CloudTransformation/workspace1'
+        node{
+            label 'DesignerWin'
+            customWorkspace 'C:/CloudTransformation/workspace1'
+            }
         }
     stages{
         stage('test'){
