@@ -32,12 +32,32 @@ pipeline{
         stage('Build'){
             steps{
                 script{
+                    if (!fileExists('AssetsBuild')) {
+                        echo 'clean up the AssetsBuild folder'
+                        bat 'RMDIR AssetsBuild /S /q'
+                    }
                     dir('C:/SoftwareAG103/common/AssetBuildEnvironment/bin'){
                         bat 'build.bat'
                     }
                 }
             }
 
-        }       
+        }  
+        stage('Deploy'){
+            //update this step to deploy to Clour LAR/GIT once it is stable
+            steps{
+                sshagent(credentials : ['AbhishekJenkinsGIT']){
+                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){
+                        bat 'git init'
+                        bat 'git remote add origin https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
+                        bat 'git pull origin master --allow-unrelated-histories'
+                        bat 'git add .'
+                        bat 'git commit -am "pushing assets build automatically "'
+                        bat 'git push git+ssh://git@github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git --all | true'
+
+                    }
+                }
+            }
+        }     
     }
 }
