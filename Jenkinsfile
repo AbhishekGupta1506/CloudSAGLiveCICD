@@ -77,7 +77,7 @@ pipeline{
                         bat 'git init'
                         bat 'git remote add origin https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
                         bat 'git pull origin master --allow-unrelated-histories'**/
-                        bat 'git init'
+                        bat 'git status'
                         bat 'git add .'
                         bat 'git commit -am "pushing assets build automatically "'
                         bat 'git push git+ssh://git@github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git --all | true'
