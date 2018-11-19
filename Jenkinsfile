@@ -51,6 +51,9 @@ pipeline{
             steps{
                 sshagent(credentials : ['AccessGitFromvmsiqacloud02']){
                     dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){
+                        bat 'git config --global user.name AbhishekGupta1506'
+                        bat 'git config --global user.email abhishekgupta@gmail.com'
+                        bat 'git commit --amend --reset-author'
                         bat 'git init'
                         bat 'git remote add origin https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
                         bat 'git pull origin master --allow-unrelated-histories'
