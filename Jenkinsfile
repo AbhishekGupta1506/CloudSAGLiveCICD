@@ -36,7 +36,9 @@ pipeline{
                     if (fileExists('AssetsBuild')) {
                         echo 'clean up the AssetsBuild folder'
                         dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){
-                             bat 'del /s /q *'
+                            echo 'pulling the update'                              
+                            bat 'git pull'
+                            //bat 'del /s /q *'
                         }
                     }
                     dir('C:/SoftwareAG103/common/AssetBuildEnvironment/bin'){
