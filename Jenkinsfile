@@ -70,7 +70,7 @@ pipeline{
             //update this step to deploy to Clour LAR/GIT once it is stable
             steps{
                 sshagent(credentials : ['AccessGitFromvmsiqacloud02']){
-                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){
+                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild/CloudSAGLiveAssetBuildUsingABE'){
                        /** bat 'git config --global user.name AbhishekGupta1506'
                         bat 'git config --global user.email abhishekgupta@gmail.com'
                         //bat 'git commit --amend --reset-author -am "updated the username and email"'
