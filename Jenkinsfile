@@ -11,41 +11,52 @@ pipeline{
     }
     stages{
         stage('CheckOut Assets'){
-            steps{
-                script{
-                    if (!fileExists('Assets')) {
-                        bat 'mkdir Assets'
-                        dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){ 
-                            echo 'cloning the project'                              
-                            bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+            parallel{
+                stage('checkout Assets'){
+                    steps{
+                        script{
+                            if (!fileExists('Assets')) {
+                                bat 'mkdir Assets'
+                                dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){ 
+                                    echo 'cloning the project'                              
+                                    bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                            }
+                            } else {
+                                echo 'Assets directory exist'
+                                dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){                            
+                                    echo 'pulling the updates'                              
+                                    bat 'git pull'
+                                    bat 'git submodule update'
+                                }
+                            }                    
+                        }                                                        
                     }
-                    } else {
-                        echo 'Assets directory exist'
-                        dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){                            
-                            echo 'pulling the updates'                              
-                            bat 'git pull'
-                            bat 'git submodule update'
-                        }
-                    }                    
-                }                                                        
+                }
+                stage('checkout AssetsBuild'){
+                    steps{
+                        script{
+                                if (!fileExists('AssetsBuild')) {  
+                                    bat 'mkdir AssetsBuild'
+                                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){ 
+                                        echo 'cloning the project'                              
+                                        bat 'git clone https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
+                                }
+                                } else {
+                                    echo 'AssetsBuild directory exist'
+                                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild/CloudSAGLiveAssetBuildUsingABE'){                            
+                                        echo 'pulling the updates'                              
+                                        bat 'git pull'
+                                    }
+                            }                   
+                        }                                                        
+                    }
+                 }
             }
         }
         stage('Build'){
             steps{
                 script{
-                     if (!fileExists('AssetsBuild')) {
-                        bat 'mkdir AssetsBuild'
-                        dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){ 
-                            echo 'cloning the project'                              
-                            bat 'git clone https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
-                    }
-                    } else {
-                        echo 'AssetsBuild directory exist'
-                        dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild/CloudSAGLiveAssetBuildUsingABE'){                            
-                            echo 'pulling the updates'                              
-                            bat 'git pull'
-                        }
-                    }     
+                     
 
 
                     dir('C:/SoftwareAG103/common/AssetBuildEnvironment/bin'){
