@@ -33,17 +33,6 @@ pipeline{
         stage('Build'){
             steps{
                 script{
-                    bat 'dir'
-                   /** if (fileExists('AssetsBuild')) {
-                        echo 'pulling the update'
-                        dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){
-                            assetsBuildPresent = true
-                            echo 'pulling the update'                              
-                            bat 'git pull'
-                            //bat 'del /s /q *'
-                        }
-                    }**/
-
                      if (!fileExists('AssetsBuild')) {
                         bat 'mkdir AssetsBuild'
                         dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){ 
@@ -79,7 +68,7 @@ pipeline{
                         bat 'git pull origin master --allow-unrelated-histories'**/
                         bat 'git status'
                         bat 'git add .'
-                        bat 'git commit -am "pushing assets build automatically "'
+                        bat 'git commit -am "pushing assets build automatically"'
                         bat 'git push git+ssh://git@github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git --all | true'
 
                     }
