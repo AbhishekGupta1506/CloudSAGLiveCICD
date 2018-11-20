@@ -10,7 +10,7 @@ pipeline{
         userHome="C: + %homepath%"
     }
     stages{
-        stage('CheckOut Assets'){
+        stage('CheckOut'){
             parallel{
                 stage('checkout Assets'){
                     steps{
