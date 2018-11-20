@@ -53,13 +53,21 @@ pipeline{
                  }
             }
         }
+        stage('Install ABE'){
+            steps{
+                script{
+                    dir('C:/CloudTransformation/SAGLiveWorkspace/script'){
+                        bat 'sagabeinstall.bat'
+                    }
+                    
+                }
+            }
+        }
         stage('Build'){
             steps{
                 script{
-                     
-
-
-                    dir('C:/SoftwareAG103/common/AssetBuildEnvironment/bin'){
+                    bat 'cp C:/CloudTransformation/SAGLiveWorkspace/script/build.properties C:/SoftwareAG103ABE/common/AssetBuildEnvironment/master_build'
+                    dir('C:/SoftwareAG103ABE/common/AssetBuildEnvironment/bin'){
                         bat 'build.bat'
                     }
                 }
