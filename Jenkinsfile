@@ -12,7 +12,7 @@ pipeline{
     stages{
         stage('CheckOut'){
             parallel{
-                stage('checkout Assets'){
+                stage('checkout GITAssets'){
                     steps{
                         script{
                             if (!fileExists('Assets')) {
@@ -32,7 +32,7 @@ pipeline{
                         }                                                        
                     }
                 }
-                stage('checkout AssetsBuild'){
+                stage('checkout GITAssetsBuild'){
                     steps{
                         script{
                                 if (!fileExists('AssetsBuild')) {  
@@ -79,12 +79,12 @@ pipeline{
             steps{
                 sshagent(credentials : ['AccessGitFromvmsiqacloud02']){
                     dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild/CloudSAGLiveAssetBuildUsingABE'){
-                       /** bat 'git config --global user.name AbhishekGupta1506'
-                        bat 'git config --global user.email abhishekgupta@gmail.com'
+                        //bat 'git config --global user.name AbhishekGupta1506'
+                        //bat 'git config --global user.email abhishekgupta@gmail.com'
                         //bat 'git commit --amend --reset-author -am "updated the username and email"'
-                        bat 'git init'
-                        bat 'git remote add origin https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
-                        bat 'git pull origin master --allow-unrelated-histories'**/
+                        //bat 'git init'
+                        //bat 'git remote add origin https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
+                        //bat 'git pull origin master --allow-unrelated-histories'
                         bat 'git status'
                         bat 'git add .'
                         bat 'git commit -am "pushing assets build automatically"'
