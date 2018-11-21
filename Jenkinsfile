@@ -78,6 +78,16 @@ pipeline{
             //update this step to deploy to Clour LAR/GIT once it is stable
             steps{
                echo 'deploy'
+               script{
+                   dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
+                      bat 'git status'
+                      bat 'git add .'
+                      bat 'git commit -am "pushing the latest build"'  
+                      bat 'git push'  
+
+
+                   }
+               }
             }
         }     
     }
