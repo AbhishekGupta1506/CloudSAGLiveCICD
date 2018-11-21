@@ -1,4 +1,3 @@
-def assetsBuildPresent = false
 pipeline{
     agent{
         node{
@@ -32,25 +31,26 @@ pipeline{
                         }                                                        
                     }
                 }
-                stage('checkout GITAssetsBuild'){
+                stage('checkout Cloud AssetsBuild'){
                     steps{
                         script{
-                                if (!fileExists('AssetsBuild')) {  
-                                    bat 'mkdir AssetsBuild'
-                                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild'){ 
-                                        echo 'cloning the project'                              
-                                        bat 'git clone https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
+                            if (!fileExists('CloudAssetsBuild')) { 
+                                bat 'mkdir CloudAssetsBuild'
+                            } 
+                            else{
+                                dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
+                                    bat 'del /s /q *'
                                 }
-                                } else {
-                                    echo 'AssetsBuild directory exist'
-                                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild/CloudSAGLiveAssetBuildUsingABE'){                            
-                                        echo 'pulling the updates'                              
-                                        bat 'git pull'
-                                    }
-                            }                   
+                            }
+                            dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
+                                bat 'git config --global http.sslVerify false'
+                                bat 'git config --global credential.helper cache'
+                                bat 'git config --global push.default simple'
+                                checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://miqsagcloud.saglive.com/integration/rest/internal/wmic-git/stage00-soln-is']]])
+                            }             
                         }                                                        
                     }
-                 }
+                }
             }
         }
         stage('Install ABE'){
@@ -77,21 +77,7 @@ pipeline{
         stage('Deploy'){
             //update this step to deploy to Clour LAR/GIT once it is stable
             steps{
-                sshagent(credentials : ['AccessGitFromvmsiqacloud02']){
-                    dir('C:/CloudTransformation/SAGLiveWorkspace/AssetsBuild/CloudSAGLiveAssetBuildUsingABE'){
-                        //bat 'git config --global user.name AbhishekGupta1506'
-                        //bat 'git config --global user.email abhishekgupta@gmail.com'
-                        //bat 'git commit --amend --reset-author -am "updated the username and email"'
-                        //bat 'git init'
-                        //bat 'git remote add origin https://github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git'
-                        //bat 'git pull origin master --allow-unrelated-histories'
-                        bat 'git status'
-                        bat 'git add .'
-                        bat 'git commit -am "pushing assets build automatically"'
-                        bat 'git push git+ssh://git@github.com/AbhishekGupta1506/CloudSAGLiveAssetBuildUsingABE.git --all | true'
-
-                    }
-                }
+               echo 'deploy'
             }
         }     
     }
