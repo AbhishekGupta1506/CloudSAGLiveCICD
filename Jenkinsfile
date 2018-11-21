@@ -32,9 +32,9 @@ pipeline{
                         }                                                        
                     }
                 }
-                stage('checkout AssetsBuild'){
-                    parallel{
-                        stage('checkout GIT AssetsBUild'){
+               // stage('checkout AssetsBuild'){
+                   // parallel{
+                        /**stage('checkout GIT AssetsBUild'){
                             steps{
                                 script{
                                     if (!fileExists('AssetsBuild')) {  
@@ -52,7 +52,7 @@ pipeline{
                                     }                   
                                 }                                                        
                              }
-                        }
+                        }**/
                         stage('checkout Cloud AssetsBuild'){
                             steps{
                                 script{
@@ -86,8 +86,8 @@ pipeline{
                                 }                                                        
                              }
                         }
-                    }
-                 }
+                   // }
+                 //}
             }
         }
         stage('Install ABE'){
