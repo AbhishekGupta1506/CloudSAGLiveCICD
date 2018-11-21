@@ -6,7 +6,7 @@ REM ABE install
 SET version=103
 SET server=aquarius-blr
 SET installer.prefix=webM103
-SET install.dir=C\:\\SoftwareAG%version%ABE
+SET install.dir=C:\SoftwareAG%version%ABE
 
 SET installer=http://%server%/PDShare/WWW/dataserve%installer.prefix%/data/SoftwareAGInstaller.jar
 
