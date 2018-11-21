@@ -81,9 +81,10 @@ pipeline{
                script{
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                       bat 'git status'
-                      bat 'git add .'
-                      bat 'git commit -am "pushing the latest build"'  
-                      bat 'git push'  
+                      bat 'git remote show origin'
+                     // bat 'git add .'
+                     // bat 'git commit -am "pushing the latest build"'  
+                     // bat 'git push'  
 
 
                    }
