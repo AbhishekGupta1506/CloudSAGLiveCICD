@@ -50,7 +50,7 @@ pipeline{
                                 echo 'CloudAssetsBuild directory exist'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                                     echo 'pulling the updates from Cloud LAR'                              
-                                    bat 'git pull'
+                                    bat 'git pull origin master'
                                 }
                             }
                                      
