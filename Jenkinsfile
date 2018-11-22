@@ -59,7 +59,7 @@ pipeline{
                 }
             }
         }
-       /** stage('Install ABE'){
+        stage('Install ABE'){
             steps{
                 script{
                     dir('C:/CloudTransformation/SAGLiveWorkspace/script'){
@@ -94,6 +94,6 @@ pipeline{
                    }
                }
             }
-        }     **/
+        }     
     }
 }
