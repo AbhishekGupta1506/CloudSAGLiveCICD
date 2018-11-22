@@ -77,18 +77,16 @@ pipeline{
 
         }  
         stage('Deploy'){
-            //update this step to deploy to Clour LAR/GIT once it is stable
+            //update this step to deploy to Cloud LAR/GIT once it is stable
             steps{
-               echo 'deploy'
+               echo 'deploy assets cloud LAR'
                script{
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                       bat 'git status'
                       bat 'git remote show origin'
-                     // bat 'git add .'
-                     // bat 'git commit -am "pushing the latest build"'  
-                     // bat 'git push'  
-
-
+                      bat 'git add .'
+                      bat 'git commit -am "pushing the latest build"'  
+                      bat 'git push'  
                    }
                }
             }
