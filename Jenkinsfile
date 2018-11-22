@@ -37,7 +37,7 @@ pipeline{
                             if (!fileExists('CloudAssetsBuild')) { 
                                 bat 'mkdir CloudAssetsBuild'
                             } 
-                            else{
+                           /** else{
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                                    echo "delete all cloud assets"
                                    bat 'dir'
@@ -45,7 +45,7 @@ pipeline{
                                    echo "deleted all cloud assets"
                                    bat 'dir'
                                 }
-                            }
+                            }**/
                             dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                                 bat 'git config --global http.sslVerify false'
                                 bat 'git config --global credential.helper cache'
@@ -57,7 +57,7 @@ pipeline{
                 }
             }
         }
-        stage('Install ABE'){
+       /** stage('Install ABE'){
             steps{
                 script{
                     dir('C:/CloudTransformation/SAGLiveWorkspace/script'){
@@ -92,6 +92,6 @@ pipeline{
                    }
                }
             }
-        }     
+        }     **/
     }
 }
