@@ -39,7 +39,9 @@ pipeline{
                             } 
                             else{
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
-                                    bat 'del /s /q *'
+                                   // bat 'del /s /q *'
+                                   echo "delete all cloud assets"
+                                   bat 'dir'
                                 }
                             }
                             dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
