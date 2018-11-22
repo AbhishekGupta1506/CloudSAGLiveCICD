@@ -14,7 +14,9 @@ pipeline{
                 stage('checkout GITAssets'){
                     steps{
                         script{
-                            if (!fileExists('Assets')) {
+
+                            echo 'checkout GITAssets'
+                           /** if (!fileExists('Assets')) {
                                 bat 'mkdir Assets'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){ 
                                     echo 'cloning the project'                              
@@ -27,7 +29,7 @@ pipeline{
                                     bat 'git pull'
                                     bat 'git submodule update'
                                 }
-                            }                    
+                            }  **/                  
                         }                                                        
                     }
                 }
@@ -47,12 +49,12 @@ pipeline{
                                    bat 'dir'
                                 }
                             }
-                            dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
+                           /** dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                                 bat 'git config --global http.sslVerify false'
                                 bat 'git config --global credential.helper cache'
-                                bat 'git config --global push.default simple'
-                                checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://miqsagcloud.saglive.com/integration/rest/internal/wmic-git/stage00-soln-is']]])
-                            }             
+                                bat 'git config --global push.default simple' **/
+                                //checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://miqsagcloud.saglive.com/integration/rest/internal/wmic-git/stage00-soln-is']]])
+                           // }            
                         }                                                        
                     }
                 }
