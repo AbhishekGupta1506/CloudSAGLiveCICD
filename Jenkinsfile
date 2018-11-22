@@ -88,6 +88,7 @@ pipeline{
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                       bat 'git status'
                       bat 'git remote show origin'
+                      bat 'git show-ref'
                       bat 'git add .'
                       bat 'git commit -am "pushing the latest build"'  
                       bat 'git push origin master'  
