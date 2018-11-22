@@ -35,9 +35,10 @@ pipeline{
                     steps{
                         script{
                             if (!fileExists('CloudAssetsBuild')) { 
+                                echo "Creating folder CloudAssetsBuild"
                                 bat 'mkdir CloudAssetsBuild'
                             } 
-                           /** else{
+                            else{
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                                    echo "delete all cloud assets"
                                    bat 'dir'
@@ -45,7 +46,7 @@ pipeline{
                                    echo "deleted all cloud assets"
                                    bat 'dir'
                                 }
-                            }**/
+                            }
                             dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                                 bat 'git config --global http.sslVerify false'
                                 bat 'git config --global credential.helper cache'
