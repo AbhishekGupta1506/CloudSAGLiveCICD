@@ -90,7 +90,7 @@ pipeline{
                       bat 'git remote show origin'
                       bat 'git add .'
                       bat 'git commit -am "pushing the latest build"'  
-                      bat 'git push'  
+                      bat 'git push origin master'  
                    }
                }
             }
