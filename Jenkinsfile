@@ -16,7 +16,7 @@ pipeline{
                         script{
 
                             echo 'checkout GITAssets'
-                           /** if (!fileExists('Assets')) {
+                            if (!fileExists('Assets')) {
                                 bat 'mkdir Assets'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){ 
                                     echo 'cloning the project'                              
@@ -29,7 +29,7 @@ pipeline{
                                     bat 'git pull'
                                     bat 'git submodule update'
                                 }
-                            }  **/                  
+                            }                    
                         }                                                        
                     }
                 }
@@ -39,22 +39,21 @@ pipeline{
                             if (!fileExists('CloudAssetsBuild')) { 
                                 echo "Creating folder CloudAssetsBuild"
                                 bat 'mkdir CloudAssetsBuild'
+                                dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
+                                    bat 'git config --global http.sslVerify false'
+                                    bat 'git config --global credential.helper cache'
+                                    bat 'git config --global push.default simple' 
+                                    checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://miqsagcloud.saglive.com/integration/rest/internal/wmic-git/stage00-soln-is']]])
+                                }   
                             } 
                             else{
+                                echo 'CloudAssetsBuild directory exist'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
-                                   echo "delete all cloud assets"
-                                   bat 'dir'
-                                   bat 'del /s /q *'
-                                   echo "deleted all cloud assets"
-                                   bat 'dir'
+                                    echo 'pulling the updates from Cloud LAR'                              
+                                    bat 'git pull'
                                 }
                             }
-                           /** dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
-                                bat 'git config --global http.sslVerify false'
-                                bat 'git config --global credential.helper cache'
-                                bat 'git config --global push.default simple' **/
-                                //checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://miqsagcloud.saglive.com/integration/rest/internal/wmic-git/stage00-soln-is']]])
-                           // }            
+                                     
                         }                                                        
                     }
                 }
