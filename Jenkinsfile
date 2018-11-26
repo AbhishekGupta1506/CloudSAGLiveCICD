@@ -63,6 +63,9 @@ pipeline{
                    }
                    bat 'mkdir CloudGIT'
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                       for (int i = 1; i < 2; i++) {
+
+                       echo 'print stage :: stage00-Sol${i}-Sol${i}IS'
                        bat 'mkdir stage00-Sol1-Sol1IS'
                        dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS'){
                            bat 'git config --global http.sslVerify false'
@@ -96,6 +99,8 @@ pipeline{
                             bat 'git commit -am "pushing the latest build"'  
                             bat 'git push origin HEAD:master'  
                        }
+                   }
+
                    }
                }               
             }
