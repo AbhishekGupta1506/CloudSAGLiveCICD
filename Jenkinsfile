@@ -70,15 +70,19 @@ pipeline{
 					        bat 'git config --global push.default simple' 
                             checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://siqa1.saglive.com/integration/rest/internal/wmic-git/stage00-Sol1-Sol1IS']]])
                               if (!fileExists('IS')) {
-                                  echo 'copy the IS build assets'
+                                  bat 'mkdir IS'
+                              }
+                                echo 'copy the IS build assets'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/IS'){
                                     bat 'cp -r C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/IS/. .'
                                 }
-                                  echo 'copy the IS build configuration'
+                                if (!fileExists('CC')) {
+                                    bat 'mkdir CC'
+                                }
+                                echo 'copy the IS build configuration'
                                 dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/CC'){
                                     bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-OSGI-IS_default* .'	
-                                }  
-                              }
+                                } 
                               /**else{
                                   echo 'copy the UM build configuration'
                                   dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/CC'){
