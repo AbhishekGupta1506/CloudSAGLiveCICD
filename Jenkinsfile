@@ -67,11 +67,11 @@ pipeline{
                             checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://siqa1.saglive.com/integration/rest/internal/wmic-git/stage00-Sol1-Sol1IS']]])
                             echo 'copy the IS build assets'
                             dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/IS'){
-                                bat 'copy C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/IS .'
+                                bat 'copy C:\CloudTransformation\SAGLiveWorkspace\CloudAssetsBuild\IS .'
                             }
                             echo 'copy the IS build configuration'
                             dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/CC'){
-                                bat 'copy C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-OSGI-IS_default* .'	
+                                bat 'copy C:\CloudTransformation\SAGLiveWorkspace\CloudAssetsBuild\CC\localhost-OSGI-IS_default* .'	
                             }
                             bat 'git status'
                             bat 'git remote show origin'
