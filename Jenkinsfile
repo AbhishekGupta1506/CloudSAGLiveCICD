@@ -91,7 +91,7 @@ pipeline{
                       bat 'git show-ref'
                       bat 'git add .'
                       bat 'git commit -am "pushing the latest build"'  
-                      bat 'git push origin master'  
+                      bat 'git push origin HEAD:master'  
                    }
                }
             }
