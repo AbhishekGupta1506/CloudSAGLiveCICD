@@ -9,7 +9,6 @@ pipeline{
         userHome="C: + %homepath%"
     }
     stages{
-        stage('CheckOut'){
             stage('checkout GITAssets'){
                 steps{
                     script{
@@ -32,7 +31,6 @@ pipeline{
                     }                                                        
                 }
             }
-        }
         stage('Install ABE'){
             steps{
                 script{
