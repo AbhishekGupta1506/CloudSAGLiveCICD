@@ -43,7 +43,7 @@ pipeline{
                                     bat 'git config --global http.sslVerify false'
                                     bat 'git config --global credential.helper cache'
                                     bat 'git config --global push.default simple' 
-                                    checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://siqa1.saglive.com/integration/rest/internal/wmic-git/stage00-Sol1-Sol1IS']]])
+                                    checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://siqa1.saglive.com/integration/rest/internal/wmic-git/stage00-Sol2-Sol2IS']]])
                                 }   
                             } 
                             else{
