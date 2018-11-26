@@ -65,8 +65,8 @@ pipeline{
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
                        for (int i = 1; i < 2; i++) {
 
-                       bat 'echo print stage :: $i-$i'
-                       bat 'echo stage00-Sol${i}-Sol${i}IS'
+                       bat "echo print stage :: $i-$i"
+                       bat "echo stage00-Sol${i}-Sol${i}IS"
                        echo 'print stage :: $i-$i'
                        echo 'print stage :: stage00-Sol${i}-Sol${i}IS'
                        bat 'mkdir stage00-Sol1-Sol1IS'
