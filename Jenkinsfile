@@ -56,16 +56,32 @@ pipeline{
             //update this step to deploy to Cloud LAR/GIT once it is stable
             steps{
                echo 'deploy assets cloud LAR'
-              /** script{
-                   dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
-                      bat 'git status'
-                      bat 'git remote show origin'
-                      bat 'git show-ref'
-                      bat 'git add .'
-                      bat 'git commit -am "pushing the latest build"'  
-                      bat 'git push origin HEAD:master'  
+               script{
+                   bat 'mkdir CloudGIT'
+                   dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                       bat 'mkdir stage00-Sol1-Sol1IS'
+                       dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS'){
+                           bat 'git config --global http.sslVerify false'
+					        bat 'git config --global credential.helper cache'
+					        bat 'git config --global push.default simple' 
+                            checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://siqa1.saglive.com/integration/rest/internal/wmic-git/stage00-Sol1-Sol1IS']]])
+                            echo 'copy the IS build assets'
+                            dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/IS'){
+                                bat 'copy C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/IS .'
+                            }
+                            echo 'copy the IS build configuration'
+                            dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/CC'){
+                                bat 'copy C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-OSGI-IS_default* .'	
+                            }
+                            bat 'git status'
+                            bat 'git remote show origin'
+                            bat 'git show-ref'
+                            bat 'git add .'
+                            bat 'git commit -am "pushing the latest build"'  
+                            bat 'git push origin HEAD:master'  
+                       }
                    }
-               }**/
+               }               
             }
         }     
     }
