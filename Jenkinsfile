@@ -59,7 +59,7 @@ pipeline{
                script{
                    if (fileExists('CloudGIT')) {
                        bat 'rd /s /q CloudGIT'
-                       bat 'rd /s /q CloudGIT@tmp'
+                       //bat 'rd /s /q CloudGIT@tmp'
                    }
                    bat 'mkdir CloudGIT'
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
