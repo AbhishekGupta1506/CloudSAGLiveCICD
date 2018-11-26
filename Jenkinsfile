@@ -57,6 +57,10 @@ pipeline{
             steps{
                echo 'deploy assets cloud LAR'
                script{
+                   if (fileExists('CloudGIT')) {
+                       bat 'rd /s /q CloudGIT'
+                       bat 'rd /s /q CloudGIT@tmp'
+                   }
                    bat 'mkdir CloudGIT'
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
                        bat 'mkdir stage00-Sol1-Sol1IS'
