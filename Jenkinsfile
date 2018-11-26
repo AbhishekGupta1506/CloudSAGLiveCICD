@@ -10,52 +10,26 @@ pipeline{
     }
     stages{
         stage('CheckOut'){
-            parallel{
-                stage('checkout GITAssets'){
-                    steps{
-                        script{
+            stage('checkout GITAssets'){
+                steps{
+                    script{
 
-                            echo 'checkout GITAssets'
-                            if (!fileExists('Assets')) {
-                                bat 'mkdir Assets'
-                                dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){ 
-                                    echo 'cloning the project'                              
-                                    bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                        echo 'checkout GITAssets'
+                        if (!fileExists('Assets')) {
+                            bat 'mkdir Assets'
+                            dir('C:/CloudTransformation/SAGLiveWorkspace/Assets'){ 
+                                echo 'cloning the project'                              
+                                bat 'git clone --recurse-submodules https://github.com/AbhishekGupta1506/CloudSAGLiveAssets.git'
+                        }
+                        } else {
+                            echo 'Assets directory exist'
+                            dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){                            
+                                echo 'pulling the updates'                              
+                                bat 'git pull'
+                                bat 'git submodule update'
                             }
-                            } else {
-                                echo 'Assets directory exist'
-                                dir('C:/CloudTransformation/SAGLiveWorkspace/Assets/CloudSAGLiveAssets'){                            
-                                    echo 'pulling the updates'                              
-                                    bat 'git pull'
-                                    bat 'git submodule update'
-                                }
-                            }                    
-                        }                                                        
-                    }
-                }
-                stage('checkout Cloud AssetsBuild'){
-                    steps{
-                        script{
-                            if (!fileExists('CloudAssetsBuild')) { 
-                                echo "Creating folder CloudAssetsBuild"
-                                bat 'mkdir CloudAssetsBuild'
-                                dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
-                                    bat 'git config --global http.sslVerify false'
-                                    bat 'git config --global credential.helper cache'
-                                    bat 'git config --global push.default simple' 
-                                    checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: 'https://siqa1.saglive.com/integration/rest/internal/wmic-git/stage00-Sol3-Sol3UM']]])
-                                }   
-                            } 
-                            else{
-                                echo 'CloudAssetsBuild directory exist'
-                                dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
-                                    echo 'pulling the updates from Cloud LAR'                              
-                                    bat 'git pull origin master'
-                                }
-                            }
-                                     
-                        }                                                        
-                    }
+                        }                    
+                    }                                                        
                 }
             }
         }
@@ -84,7 +58,7 @@ pipeline{
             //update this step to deploy to Cloud LAR/GIT once it is stable
             steps{
                echo 'deploy assets cloud LAR'
-               script{
+              /** script{
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild'){
                       bat 'git status'
                       bat 'git remote show origin'
@@ -93,7 +67,7 @@ pipeline{
                       bat 'git commit -am "pushing the latest build"'  
                       bat 'git push origin HEAD:master'  
                    }
-               }
+               }**/
             }
         }     
     }
