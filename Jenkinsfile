@@ -77,15 +77,11 @@ pipeline{
                             else{
                                 ISSolName = "stage00-Sol${i}-Sol${i}IS1"
                                 UMSolName = "stage00-Sol${i}-Sol${i}UM"
-                            }
-                            bat "echo ${ISSolName}"
-                            bat "echo ${UMSolName}"
-                            bat "mkdir ${UMSolName}"
-                            bat "mkdir ${ISSolName}"
-
-                            
+                            }                           
                             if(i != 1){
                                 echo 'pushing the UM configuration'
+                                bat "echo ${UMSolName}"
+                                bat "mkdir ${UMSolName}"
                                 dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${UMSolName}"){
                                 bat 'git config --global http.sslVerify false'
                                 bat 'git config --global credential.helper cache'
@@ -111,6 +107,8 @@ pipeline{
                             }
 
                             dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${ISSolName}"){
+                                bat "echo ${ISSolName}"                            
+                                bat "mkdir ${ISSolName}"
                                 echo 'pushing the IS Assets/configuration'
                                 bat 'git config --global http.sslVerify false'
                                 bat 'git config --global credential.helper cache'
