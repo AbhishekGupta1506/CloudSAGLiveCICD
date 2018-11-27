@@ -1,3 +1,4 @@
+def SolName
 pipeline{
     agent{
         node{
@@ -63,27 +64,36 @@ pipeline{
                    }
                    bat 'mkdir CloudGIT'
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
-                       for (int i = 1; i < 3; i++) {
-                        bat "echo print stage :: $i-$i"
-                        bat "echo stage00-Sol${i}-Sol${i}IS"
-                        bat "mkdir stage00-Sol${i}-Sol${i}IS"
-                        dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol${i}-Sol${i}IS"){
-                            bat 'git config --global http.sslVerify false'
+                       for (int i = 1; i <= 3; i++) {
+                            bat "echo print stage :: $i-$i"  
+
+                            if(i <= 2){
+                                SolName = stage00-Sol${i}-Sol${i}IS
+                            }
+                            else{
+                                SolName = stage00-Sol${i}-Sol${i}IS1
+                            }
+                            bat "echo ${SolName}"
+                            bat "mkdir ${SolName}"
+                            dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${SolName}"){
+                                bat 'git config --global http.sslVerify false'
                                 bat 'git config --global credential.helper cache'
                                 bat 'git config --global push.default simple' 
-                                checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/rest/internal/wmic-git/stage00-Sol${i}-Sol${i}IS"]]])
+                                checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], 
+                                submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', 
+                                url: "https://siqa1.saglive.com/integration/rest/internal/wmic-git/${SolName}"]]])
                                 if (!fileExists('IS')) {
                                     bat 'mkdir IS'
                                 }
                                     echo 'copy the IS build assets'
-                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol${i}-Sol${i}IS/IS"){
+                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${SolName}/IS"){
                                         bat 'cp -r C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/IS/. .'
                                     }
                                     if (!fileExists('CC')) {
                                         bat 'mkdir CC'
                                     }
                                     echo 'copy the IS build configuration'
-                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol${i}-Sol${i}IS/CC"){
+                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${SolName}/CC"){
                                         bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-OSGI-IS_default* .'	
                                     } 
                                 /**else{
@@ -91,15 +101,16 @@ pipeline{
                                     dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/stage00-Sol1-Sol1IS/CC'){
                                         bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-Universal-Messaging-umserver* .'	
                                     }  
-                                }          **/                                       
-                                bat 'git status'
-                                bat 'git remote show origin'
-                                bat 'git show-ref'
-                                bat 'git add .'
-                                bat 'git commit -am "pushing the latest build"'  
-                                bat 'git push origin HEAD:master'  
+                                    }          **/                                       
+                                    bat 'git status'
+                                    bat 'git remote show origin'
+                                    bat 'git show-ref'
+                                    bat 'git add .'
+                                    bat 'git commit -am "pushing the latest build"' 
+                                    echo "pushing assets/config to  ${SolName}" 
+                                    bat 'git push origin HEAD:master'  
+                            }
                         }
-                     }
 
                    }
                }               
