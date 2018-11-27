@@ -68,10 +68,10 @@ pipeline{
                             bat "echo print stage :: $i-$i"  
 
                             if(i <= 2){
-                                SolName = stage00-Sol${i}-Sol${i}IS
+                                SolName = "stage00-Sol${i}-Sol${i}IS"
                             }
                             else{
-                                SolName = stage00-Sol${i}-Sol${i}IS1
+                                SolName = "stage00-Sol${i}-Sol${i}IS1"
                             }
                             bat "echo ${SolName}"
                             bat "mkdir ${SolName}"
