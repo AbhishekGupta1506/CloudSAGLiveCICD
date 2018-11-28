@@ -1,7 +1,6 @@
 def ISSolName
 def UMSolName
-def response
-def responseStatus 
+ 
 pipeline{
     agent{
         node{
@@ -148,6 +147,8 @@ pipeline{
         stage('Test'){
             steps{
                 script{
+                    def response
+                    def responseStatus
                     for(int i=0;i<10;i++){
 
                         try{
