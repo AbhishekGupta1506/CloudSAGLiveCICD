@@ -1,6 +1,7 @@
 def ISSolName
 def UMSolName
- 
+def response
+def responseStatus 
 pipeline{
     agent{
         node{
@@ -145,22 +146,19 @@ pipeline{
         stage('Test'){
             steps{
                 script{
-                    def response
-                    def responseStatus
+                    
                     for(int i=0;i<10;i++){
                         echo "Inside for"
                         try{
                             echo "Inside try"
                             response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
-                            responseStatus = "${response.status}"
-                            echo "Status: ${responseStatus}"
                         }
                         catch (Exception e){
                             echo "Inside catch"
-                            responseStatus = "${response.status}"
-                            echo "Inside Catch: HTTP request failed"
+                            //responseStatus = "${response.status}"
+                            echo "Inside catch: HTTP request failed"
                         }                        
-                        //responseStatus = "${response.status}"
+                        responseStatus = "${response.status}"
                         echo "status: ${responseStatus}"
                         if(responseStatus == "200"){
                             echo "Inside if"
