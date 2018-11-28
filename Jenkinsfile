@@ -152,29 +152,28 @@ pipeline{
                         try{
                             echo "Inside try"
                             response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
-                            responseStatus = "${response.status}"
-                            echo "Status: ${responseStatus}"
+                            //responseStatus = "${response.status}"
+                            //echo "Status: ${responseStatus}"
                         }
                         catch (Exception e){
                             echo "Inside catch"
-                            echo "Status: ${responseStatus}"
                             echo "Inside Catch: HTTP request failed"
                         }                        
-                        
+                        responseStatus = "${response.status}"
                         if(responseStatus == "200"){
                             echo "Inside if"
                             echo "Status: passed with status ${responseStatus}"
-                            //break
+                            break
                         } 
                         else if(responseStatus == "502"){
                             echo "Inside else if"
-                            echo "Status: failed with status ${responseStatus}. Serer not available, its restarting"
+                            echo "Status: failed with status ${responseStatus}. Server not available, its restarting"
                             echo "will retry after 10 sec"
                             sleep 10
                         }
                         else{
                             echo "Inside else"
-                            echo "Status: failed with status ${responseStatus}. Serer not working"
+                            echo "Status: failed with status ${responseStatus}. Server not working"
                             break
                         }
                     }                    
