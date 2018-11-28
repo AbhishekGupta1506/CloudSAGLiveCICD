@@ -68,7 +68,7 @@ pipeline{
                    }
                    bat 'mkdir CloudGIT'
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
-                       for(int tenant = 1; tenant < 5; tenant++){
+                       for(int tenant = 1; tenant < 2; tenant++){
                            tenantName = "siqa${tenant}"
                             for (int i = 1; i <= 3; i++) {
                                 bat "echo print stage :: $i-$i"  
