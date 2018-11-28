@@ -163,7 +163,7 @@ pipeline{
                         if(responseStatus == "200"){
                             echo "Inside if"
                             echo "Status: passed with status ${response.status}"
-                            break
+                            //break
                         } 
                         else if(responseStatus == "502"){
                             echo "Inside else if"
