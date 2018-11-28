@@ -147,8 +147,15 @@ pipeline{
             steps{
                 script{
                     for(int i=0;i<10;i++){
-                        def response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
-                        echo "Status: ${response.status}"
+
+                        try{
+                            def response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
+                            echo "Status: ${response.status}"
+                        }
+                        catch(exception e){
+                            echo "Inside Catch: HTTP request failed"
+                        }
+                        
                         def responseStatus = ${response.status}
                         if(responseStatus == 200){
                             echo "Status: passed with status ${response.status}"
