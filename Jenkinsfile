@@ -157,7 +157,8 @@ pipeline{
                             echo "Inside catch"
                             //responseStatus = "${response.status}"
                             echo "Inside catch: HTTP request failed"
-                        }                        
+                        }
+                        echo "Status: ${response.status}"                        
                         responseStatus = "${response.status}"
                         echo "status: ${responseStatus}"
                         if(responseStatus == "200"){
