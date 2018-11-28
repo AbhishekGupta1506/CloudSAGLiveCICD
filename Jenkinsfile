@@ -152,14 +152,16 @@ pipeline{
                         try{
                             echo "Inside try"
                             response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
-                            //responseStatus = "${response.status}"
-                            //echo "Status: ${responseStatus}"
+                            responseStatus = "${response.status}"
+                            echo "Status: ${responseStatus}"
                         }
                         catch (Exception e){
                             echo "Inside catch"
+                            responseStatus = "${response.status}"
                             echo "Inside Catch: HTTP request failed"
                         }                        
-                        responseStatus = "${response.status}"
+                        //responseStatus = "${response.status}"
+                        echo "status: ${responseStatus}"
                         if(responseStatus == "200"){
                             echo "Inside if"
                             echo "Status: passed with status ${responseStatus}"
