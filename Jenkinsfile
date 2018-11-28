@@ -161,11 +161,11 @@ pipeline{
                         }
                         
                         responseStatus = "${response.status}"
-                        if(responseStatus == 200){
+                        if(responseStatus == "200"){
                             echo "Status: passed with status ${response.status}"
                             break
                         } 
-                        else if(responseStatus == 502){
+                        else if(responseStatus == "502"){
                             echo "Status: failed with status ${response.status}. Serer not available, its restarting"
                             echo "will retry after 10 sec"
                             sleep 10
