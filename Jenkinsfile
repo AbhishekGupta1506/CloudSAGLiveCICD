@@ -1,5 +1,6 @@
 def ISSolName
 def UMSolName
+def responseStatus 
 pipeline{
     agent{
         node{
@@ -156,7 +157,7 @@ pipeline{
                             echo "Inside Catch: HTTP request failed"
                         }
                         
-                        def responseStatus = ${response.status}
+                        responseStatus = "${response.status}"
                         if(responseStatus == 200){
                             echo "Status: passed with status ${response.status}"
                             break
