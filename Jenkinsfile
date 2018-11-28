@@ -68,7 +68,6 @@ pipeline{
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
                        for (int i = 1; i <= 3; i++) {
                             bat "echo print stage :: $i-$i"  
-
                             if(i <= 2){
                                 ISSolName = "stage00-Sol${i}-Sol${i}IS"
                                 if( i != 1){
@@ -106,7 +105,6 @@ pipeline{
                                     bat 'git push origin HEAD:master'  
                                 }
                             }
-
                             dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${ISSolName}"){
                                 bat "echo ${ISSolName}"                            
                                 bat "mkdir ${ISSolName}"
@@ -150,33 +148,35 @@ pipeline{
                     def response
                     def responseStatus
                     for(int i=0;i<10;i++){
-
+                        echo "Inside for"
                         try{
+                            echo "Inside try"
                             response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
                             echo "Status: ${response.status}"
                         }
                         catch (Exception e){
+                            echo "Inside catch"
                             echo "Status: ${response.status}"
                             echo "Inside Catch: HTTP request failed"
-                        }
-                        
+                        }                        
                         responseStatus = "${response.status}"
                         if(responseStatus == "200"){
+                            echo "Inside if"
                             echo "Status: passed with status ${response.status}"
                             break
                         } 
                         else if(responseStatus == "502"){
+                            echo "Inside else if"
                             echo "Status: failed with status ${response.status}. Serer not available, its restarting"
                             echo "will retry after 10 sec"
                             sleep 10
                         }
                         else{
+                            echo "Inside else"
                             echo "Status: failed with status ${response.status}. Serer not working"
                             break
                         }
-                    }
-                    
-
+                    }                    
                 }                                                        
             }
         }  
