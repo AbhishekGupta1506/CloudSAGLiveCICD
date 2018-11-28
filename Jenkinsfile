@@ -146,7 +146,7 @@ pipeline{
         stage('Test'){
             steps{
                 script{
-                    for(;;){
+                    for(int i=0;i<10;i++){
                         def response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
                         echo "Status: ${response.status}"
                         def responseStatus = ${response.status}
@@ -156,6 +156,8 @@ pipeline{
                         } 
                         else if(responseStatus == 502){
                             echo "Status: failed with status ${response.status}. Serer not available, its restarting"
+                            echo "will retry after 10 sec"
+                            sleep 10
                         }
                         else{
                             echo "Status: failed with status ${response.status}. Serer not working"
