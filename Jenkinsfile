@@ -68,6 +68,9 @@ pipeline{
                    bat 'mkdir CloudGIT'
                    dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
                        for (int i = 1; i <= 3; i++) {
+
+
+
                             bat "echo print stage :: $i-$i"  
                             if(i <= 2){
                                 ISSolName = "stage00-Sol${i}-Sol${i}IS"
@@ -139,6 +142,9 @@ pipeline{
                                 bat 'git push origin HEAD:master'  
                             }
                         }
+
+
+
                    }
                }               
             }
@@ -173,7 +179,7 @@ pipeline{
                             }
                         }
                         catch (Exception e){
-                            echo "Inside catch"
+                            echo "Inside catch: ${e}"
                             //responseStatus = "${response.status}"
                             echo "Inside catch: HTTP request failed"
                         }
