@@ -85,8 +85,8 @@ pipeline{
                                 if(i != 1){
                                     echo 'pushing the UM configuration'
                                     bat "echo ${UMSolName}"
-                                    bat "mkdir ${UMSolName}"
-                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${UMSolName}"){
+                                    bat "mkdir ${tenantName}-${UMSolName}"
+                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${UMSolName}"){
                                         bat 'git config --global http.sslVerify false'
                                         bat 'git config --global credential.helper cache'
                                         bat 'git config --global push.default simple' 
@@ -109,9 +109,9 @@ pipeline{
                                         bat 'git push origin HEAD:master'  
                                     }
                                 }
-                                dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${ISSolName}"){
-                                    bat "echo ${ISSolName}"                            
-                                    bat "mkdir ${ISSolName}"
+                                bat "echo ${ISSolName}"                            
+                                bat "mkdir ${tenantName}-${ISSolName}"
+                                dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}"){
                                     echo 'pushing the IS Assets/configuration'
                                     bat 'git config --global http.sslVerify false'
                                     bat 'git config --global credential.helper cache'
