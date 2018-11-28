@@ -1,5 +1,6 @@
 def ISSolName
 def UMSolName
+def response
 def responseStatus 
 pipeline{
     agent{
@@ -150,7 +151,7 @@ pipeline{
                     for(int i=0;i<10;i++){
 
                         try{
-                            def response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
+                            response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
                             echo "Status: ${response.status}"
                         }
                         catch (Exception e){
