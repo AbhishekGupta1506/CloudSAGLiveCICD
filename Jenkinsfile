@@ -142,6 +142,14 @@ pipeline{
                    }
                }               
             }
-        }     
+        }   
+        stage('Test'){
+            steps{
+                script{
+                    def response2 = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
+                    echo "Status: ${response2.status}"                    
+                }                                                        
+            }
+        }  
     }
 }
