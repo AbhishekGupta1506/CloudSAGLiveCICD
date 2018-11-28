@@ -152,31 +152,32 @@ pipeline{
                         try{
                             echo "Inside try"
                             response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
+                            echo "Status: ${response.status}"                        
+                            responseStatus = "${response.status}"
+                            echo "status: ${responseStatus}"
+                            if(responseStatus == "200"){
+                                echo "Inside if"
+                                echo "Status: passed with status ${responseStatus}"
+                                break
+                            } 
+                            else if(responseStatus == "502"){
+                                echo "Inside else if"
+                                echo "Status: failed with status ${responseStatus}. Server not available, its restarting"
+                                echo "will retry after 10 sec"
+                                sleep 10
+                            }
+                            else{
+                                echo "Inside else"
+                                echo "Status: failed with status ${responseStatus}. Server not working"
+                                break
+                            }
                         }
                         catch (Exception e){
                             echo "Inside catch"
                             //responseStatus = "${response.status}"
                             echo "Inside catch: HTTP request failed"
                         }
-                        echo "Status: ${response.status}"                        
-                        responseStatus = "${response.status}"
-                        echo "status: ${responseStatus}"
-                        if(responseStatus == "200"){
-                            echo "Inside if"
-                            echo "Status: passed with status ${responseStatus}"
-                            break
-                        } 
-                        else if(responseStatus == "502"){
-                            echo "Inside else if"
-                            echo "Status: failed with status ${responseStatus}. Server not available, its restarting"
-                            echo "will retry after 10 sec"
-                            sleep 10
-                        }
-                        else{
-                            echo "Inside else"
-                            echo "Status: failed with status ${responseStatus}. Server not working"
-                            break
-                        }
+                       
                     }                    
                 }                                                        
             }
