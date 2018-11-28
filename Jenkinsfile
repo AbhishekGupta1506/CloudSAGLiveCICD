@@ -97,7 +97,7 @@ pipeline{
                                             bat 'mkdir CC'
                                         }
                                         echo 'copy the UM build configuration'
-                                        dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${UMSolName}/CC"){
+                                        dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${UMSolName}/CC"){
                                             bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-Universal-Messaging-umserver* .'	
                                         }                                       
                                         bat 'git status'
