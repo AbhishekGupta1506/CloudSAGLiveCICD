@@ -154,6 +154,7 @@ pipeline{
                             echo "Status: ${response.status}"
                         }
                         catch (Exception e){
+                            echo "Status: ${response.status}"
                             echo "Inside Catch: HTTP request failed"
                         }
                         
