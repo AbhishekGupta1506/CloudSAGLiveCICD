@@ -146,8 +146,24 @@ pipeline{
         stage('Test'){
             steps{
                 script{
-                    def response2 = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
-                    echo "Status: ${response2.status}"                    
+                    for(;;){
+                        def response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
+                        echo "Status: ${response.status}"
+                        def responseStatus = ${response.status}
+                        if(responseStatus == 200){
+                            echo "Status: passed with status ${response.status}"
+                            break
+                        } 
+                        else if(responseStatus == 502){
+                            echo "Status: failed with status ${response.status}. Serer not available, its restarting"
+                        }
+                        else{
+                            echo "Status: failed with status ${response.status}. Serer not working"
+                            break
+                        }
+                    }
+                    
+
                 }                                                        
             }
         }  
