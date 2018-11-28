@@ -123,14 +123,14 @@ pipeline{
                                         bat 'mkdir IS'
                                     }
                                     echo 'copy the IS build assets'
-                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${ISSolName}/IS"){
+                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/IS"){
                                         bat 'cp -r C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/IS/. .'
                                     }
                                     if (!fileExists('CC')) {
                                         bat 'mkdir CC'
                                     }
                                     echo 'copy the IS build configuration'
-                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${ISSolName}/CC"){
+                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/CC"){
                                         bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-OSGI-IS_default* .'	
                                     }                                       
                                     bat 'git status'
