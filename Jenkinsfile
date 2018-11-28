@@ -83,27 +83,27 @@ pipeline{
                                 bat "echo ${UMSolName}"
                                 bat "mkdir ${UMSolName}"
                                 dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${UMSolName}"){
-                                bat 'git config --global http.sslVerify false'
-                                bat 'git config --global credential.helper cache'
-                                bat 'git config --global push.default simple' 
-                                checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], 
-                                submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', 
-                                url: "https://siqa1.saglive.com/integration/rest/internal/wmic-git/${UMSolName}"]]])
-                                if (!fileExists('CC')) {
-                                    bat 'mkdir CC'
+                                    bat 'git config --global http.sslVerify false'
+                                    bat 'git config --global credential.helper cache'
+                                    bat 'git config --global push.default simple' 
+                                    checkout([ $class: 'GitSCM', branches: [[name: '*/master']], extensions: [ [$class: 'CloneOption', noTags: true, reference: '', shallow: true] ], 
+                                    submoduleCfg: [], userRemoteConfigs: [[ credentialsId: 'cloudUsernamePassword', 
+                                    url: "https://siqa1.saglive.com/integration/rest/internal/wmic-git/${UMSolName}"]]])
+                                    if (!fileExists('CC')) {
+                                        bat 'mkdir CC'
+                                    }
+                                    echo 'copy the UM build configuration'
+                                    dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${UMSolName}/CC"){
+                                        bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-Universal-Messaging-umserver* .'	
+                                    }                                       
+                                    bat 'git status'
+                                    bat 'git remote show origin'
+                                    bat 'git show-ref'
+                                    bat 'git add .'
+                                    bat 'git commit -am "pushing the latest UM build"' 
+                                    echo "pushing assets/config to ${UMSolName}" 
+                                    bat 'git push origin HEAD:master'  
                                 }
-                                echo 'copy the UM build configuration'
-                                dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${UMSolName}/CC"){
-                                    bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-Universal-Messaging-umserver* .'	
-                                }                                       
-                                bat 'git status'
-                                bat 'git remote show origin'
-                                bat 'git show-ref'
-                                bat 'git add .'
-                                bat 'git commit -am "pushing the latest UM build"' 
-                                echo "pushing assets/config to ${UMSolName}" 
-                                bat 'git push origin HEAD:master'  
-                            }
                             }
 
                             dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${ISSolName}"){
