@@ -148,7 +148,7 @@ pipeline{
                        for(int tenant = 1; tenant < 2; tenant++){
                            tenantName = "siqa${tenant}"
 
-                            deployLatestBuildAssetAndConfigToCloudGIT ${tenantName}
+                            deployLatestBuildAssetAndConfigToCloudGIT "${tenantName}"
 
 
                        }
