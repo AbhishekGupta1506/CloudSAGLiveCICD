@@ -199,7 +199,7 @@ pipeline{
         stage('Test'){
             steps{
                 script{
-                    sleep 100
+                    sleep 150
                     for(int i=0;i<10;i++){
                         //echo "Inside for"
                         try{
@@ -234,7 +234,7 @@ pipeline{
                             //echo "Inside catch: ${e}"
                             //responseStatus = "${response.status}"
                             echo "Inside catch: HTTP request failed"
-                            
+                            sleep 10                            
                         }
                        
                     }                    
