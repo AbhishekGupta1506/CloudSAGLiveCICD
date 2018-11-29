@@ -130,23 +130,16 @@ pipeline{
                     dir('C:/SoftwareAG103ABE/common/AssetBuildEnvironment/bin'){
                         bat 'build.bat'
                     }
+
+                    if (fileExists('CloudGIT')) {
+                        bat 'rd /s /q CloudGIT'
+                    }
+                    bat 'mkdir CloudGIT'
+
                 }
             }
-
         }  
-        stage('Deploy'){
-            //update this step to deploy to Cloud LAR/GIT once it is stable
-            steps{
-                script{
-                if (fileExists('CloudGIT')) {
-                bat 'rd /s /q CloudGIT'
-                            //bat 'rd /s /q CloudGIT@tmp'
-            }
-            bat 'mkdir CloudGIT'
-            }
-            }
-            
-            
+        stage('Deploy'){                    
             parallel{
                 stage('Tenant1'){
                     steps{
