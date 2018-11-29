@@ -219,6 +219,9 @@ pipeline{
                             //echo "Inside catch: ${e}"
                             //responseStatus = "${response.status}"
                             echo "Inside catch: HTTP request failed"
+                            echo "Status: ${response.status}"                        
+                            responseStatus = "${response.status}"
+                            echo "status: ${responseStatus}"
                             if(responseStatus == "502"){
                                 echo "Inside else if"
                                 echo "Status: failed with status ${responseStatus}. Server not available, its restarting"
