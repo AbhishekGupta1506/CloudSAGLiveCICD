@@ -199,30 +199,25 @@ pipeline{
         stage('Test'){
             steps{
                 script{
-                    
+                    sleep 100
                     for(int i=0;i<10;i++){
                         //echo "Inside for"
                         try{
                             echo "Inside try"
                             response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
-                            echo "Status: ${env.response.status}"                        
-                            responseStatus = "${env.response.status}"
+                            
+                            println("Status: "+response.status)
+                            println("Content: "+response.content)
+
+                            echo "Status: ${response.status}"                        
+                            responseStatus = "${response.status}"
                             echo "status: ${responseStatus}"
                             if(responseStatus == "200"){
                                 echo "Inside if"
                                 echo "Status: passed with status ${responseStatus}"
                                 break
                             } 
-                            
-                        }
-                        catch (Exception e){
-                            //echo "Inside catch: ${e}"
-                            //responseStatus = "${response.status}"
-                            echo "Inside catch: HTTP request failed"
-                            echo "Status: ${env.response.status}"                        
-                            responseStatus = "${env.response.status}"
-                            echo "status: ${responseStatus}"
-                            if(responseStatus == "502"){
+                            else if(responseStatus == "502"){
                                 echo "Inside else if"
                                 echo "Status: failed with status ${responseStatus}. Server not available, its restarting"
                                 echo "will retry after 10 sec"
@@ -233,6 +228,13 @@ pipeline{
                                 echo "Status: failed with status ${responseStatus}. Server not working"
                                 break
                             }
+                            
+                        }
+                        catch (Exception e){
+                            //echo "Inside catch: ${e}"
+                            //responseStatus = "${response.status}"
+                            echo "Inside catch: HTTP request failed"
+                            
                         }
                        
                     }                    
