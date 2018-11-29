@@ -136,13 +136,16 @@ pipeline{
         }  
         stage('Deploy'){
             //update this step to deploy to Cloud LAR/GIT once it is stable
-            script{
+            steps{
+                script{
                 if (fileExists('CloudGIT')) {
                 bat 'rd /s /q CloudGIT'
                             //bat 'rd /s /q CloudGIT@tmp'
             }
             bat 'mkdir CloudGIT'
             }
+            }
+            
             
             parallel{
                 stage('Tenant1'){
