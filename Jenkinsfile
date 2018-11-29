@@ -213,7 +213,13 @@ pipeline{
                                 echo "Status: passed with status ${responseStatus}"
                                 break
                             } 
-                            else if(responseStatus == "502"){
+                            
+                        }
+                        catch (Exception e){
+                            //echo "Inside catch: ${e}"
+                            //responseStatus = "${response.status}"
+                            echo "Inside catch: HTTP request failed"
+                            if(responseStatus == "502"){
                                 echo "Inside else if"
                                 echo "Status: failed with status ${responseStatus}. Server not available, its restarting"
                                 echo "will retry after 10 sec"
@@ -224,11 +230,6 @@ pipeline{
                                 echo "Status: failed with status ${responseStatus}. Server not working"
                                 break
                             }
-                        }
-                        catch (Exception e){
-                            //echo "Inside catch: ${e}"
-                            //responseStatus = "${response.status}"
-                            echo "Inside catch: HTTP request failed"
                         }
                        
                     }                    
