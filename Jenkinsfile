@@ -136,26 +136,64 @@ pipeline{
         }  
         stage('Deploy'){
             //update this step to deploy to Cloud LAR/GIT once it is stable
-            steps{
-               echo 'deploy assets cloud LAR'
-               script{
-                   if (fileExists('CloudGIT')) {
-                       bat 'rd /s /q CloudGIT'
-                       //bat 'rd /s /q CloudGIT@tmp'
-                   }
-                   bat 'mkdir CloudGIT'
-                   dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
-                       for(int tenant = 1; tenant < 2; tenant++){
-                           tenantName = "siqa${tenant}"
-
-                            deployLatestBuildAssetAndConfigToCloudGIT "${tenantName}"
-
-
-                       }
-
-                   }
-               }               
+            if (fileExists('CloudGIT')) {
+                bat 'rd /s /q CloudGIT'
+                            //bat 'rd /s /q CloudGIT@tmp'
             }
+            bat 'mkdir CloudGIT'
+            parallel{
+                stage('Tenant1'){
+                    steps{
+                    echo 'deploy assets cloud LAR'
+                    script{                        
+                        //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                        deployLatestBuildAssetAndConfigToCloudGIT "siqa1"
+                        //}
+                        }               
+                    }
+                }
+
+               /** stage('Tenant2'){
+                    steps{
+                    echo 'deploy assets cloud LAR'
+                    script{                        
+                        //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                            deployLatestBuildAssetAndConfigToCloudGIT "siqa2"
+                        //}
+                        }               
+                    }
+                }**/
+                stage('Tenant3'){                   
+                    steps{
+                    echo 'deploy assets cloud LAR'
+                    script{                        
+                        //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                            deployLatestBuildAssetAndConfigToCloudGIT "siqa3"
+                        //}
+                        }               
+                    }                
+                 }
+                /** stage('Tenant4'){                   
+                    steps{
+                    echo 'deploy assets cloud LAR'
+                    script{                        
+                        //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                            deployLatestBuildAssetAndConfigToCloudGIT "siqa3"
+                        //}
+                        }               
+                    }                
+                 }
+                 stage('Tenant5'){                   
+                    steps{
+                    echo 'deploy assets cloud LAR'
+                    script{                        
+                        //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                            deployLatestBuildAssetAndConfigToCloudGIT "siqa3"
+                        //}
+                        }               
+                    }                
+                 }**/
+            }            
         }   
         stage('Test'){
             steps{
