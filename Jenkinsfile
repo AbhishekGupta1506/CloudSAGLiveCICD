@@ -181,17 +181,17 @@ pipeline{
                         }               
                     }                
                  }
-                /** stage('Tenant4'){                   
+                 stage('Tenant4'){                   
                     steps{
                     echo 'deploy assets cloud LAR'
                     script{                        
                         //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
-                            deployLatestBuildAssetAndConfigToCloudGIT "siqa3"
+                            deployLatestBuildAssetAndConfigToCloudGIT "siqa4"
                         //}
                         }               
                     }                
                  }
-                 stage('Tenant5'){                   
+                /** stage('Tenant5'){                   
                     steps{
                     echo 'deploy assets cloud LAR'
                     script{                        
