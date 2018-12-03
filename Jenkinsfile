@@ -245,7 +245,6 @@ pipeline{
 
                         try{
                             echo "Testing service: CT_samplepackage.services.flow:globalVariableSubstitution"
-                            //response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/umassets.jmsMessaging.UMQueue.mixedQueue.services.publisher:publishservice"
                             response = httpRequest authentication: 'cloudUsernamePassword', url: "https://siqa1.saglive.com/integration/clouddeployment/service/development/Sol2/Sol2IS/invoke/CT_samplepackage.services.flow:globalVariableSubstitution"
                             println("Status: "+response.status)
                             println("Content: "+response.content)
