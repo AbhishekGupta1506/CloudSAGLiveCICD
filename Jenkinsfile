@@ -196,7 +196,7 @@ pipeline{
                     echo 'deploy assets cloud LAR'
                     script{                        
                         //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
-                            deployLatestBuildAssetAndConfigToCloudGIT "siqa3"
+                            deployLatestBuildAssetAndConfigToCloudGIT "siqa5"
                         //}
                         }               
                     }                
