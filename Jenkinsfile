@@ -207,6 +207,8 @@ pipeline{
             steps{
                 script{
                     sleep 150
+                    def status_new_flowservice
+                    def status_globalVariableSubstitution
                     for(int i=0;i<10;i++){
                         //echo "Inside for"
                         try{
@@ -221,7 +223,8 @@ pipeline{
                             echo "status: ${responseStatus}"
                             if(responseStatus == "200"){
                                 echo "Status: passed with status ${responseStatus}"
-                                break
+                                status_new_flowservice=true
+                                //break
                             } 
                             /**else if(responseStatus == "502"){
                                 echo "Inside else if"
@@ -240,6 +243,7 @@ pipeline{
                             //echo "Inside catch: ${e}"
                             //responseStatus = "${response.status}"
                             echo "Inside catch: HTTP request failed for service test:new_flowservice"
+                            
                             sleep 10                            
                         }
 
@@ -254,7 +258,8 @@ pipeline{
                             echo "status: ${responseStatus}"
                             if(responseStatus == "200"){
                                 echo "Status: passed with status ${responseStatus}"
-                                break
+                                status_globalVariableSubstitution=true
+                                //break
                             }                             
                         }
                         catch (Exception e){
@@ -262,6 +267,9 @@ pipeline{
                             //responseStatus = "${response.status}"
                             echo "Inside catch: HTTP request failed for service CT_samplepackage.services.flow:globalVariableSubstitution"
                             sleep 10                            
+                        } 
+                        if(status_new_flowservice && status_globalVariableSubstitution){
+                            break
                         }
                        
                     }                    
