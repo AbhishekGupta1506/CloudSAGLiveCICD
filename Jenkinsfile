@@ -191,7 +191,7 @@ pipeline{
                         }               
                     }                
                  }
-                /** stage('Tenant5'){                   
+                 stage('Tenant5'){                   
                     steps{
                     echo 'deploy assets cloud LAR'
                     script{                        
@@ -200,7 +200,7 @@ pipeline{
                         //}
                         }               
                     }                
-                 }**/
+                 }
             }            
         }   
         stage('Test'){
