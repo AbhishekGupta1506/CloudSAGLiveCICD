@@ -36,7 +36,7 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                         }
                         echo 'copy the UM build configuration'
                         dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${UMSolName}/CC"){
-                            bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-Universal-Messaging-umserver* .'	
+                            bat 'copy C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-Universal-Messaging-umserver* .'	
                         }                                       
                         bat 'git status'
                         bat 'git remote show origin'
@@ -62,14 +62,14 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                     }
                     echo 'copy the IS build assets'
                     dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/IS"){
-                        bat 'cp -r C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/IS/. .'
+                        bat 'copy -r C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/IS/. .'
                     }
                     if (!fileExists('CC')) {
                         bat 'mkdir CC'
                     }
                     echo 'copy the IS build configuration'
                     dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/CC"){
-                        bat 'cp C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-OSGI-IS_default* .'	
+                        bat 'copy C:/CloudTransformation/SAGLiveWorkspace/CloudAssetsBuild/CC/localhost-OSGI-IS_default* .'	
                     }                                       
                     bat 'git status'
                     bat 'git remote show origin'
@@ -135,7 +135,7 @@ pipeline{
         stage('Build'){
             steps{
                 script{
-                    bat 'cp C:/CloudTransformation/SAGLiveWorkspace/script/build.properties C:/SoftwareAG103ABE/common/AssetBuildEnvironment/master_build'
+                    bat 'copy C:/CloudTransformation/SAGLiveWorkspace/script/build.properties C:/SoftwareAG103ABE/common/AssetBuildEnvironment/master_build'
                     dir('C:/SoftwareAG103ABE/common/AssetBuildEnvironment/bin'){
                         bat 'build.bat'
                     }
@@ -191,7 +191,7 @@ pipeline{
                         }               
                     }                
                  }
-                 stage('Tenant5'){                   
+                 /*stage('Tenant5'){                   
                     steps{
                     echo 'deploy assets cloud LAR'
                     script{                        
@@ -200,7 +200,7 @@ pipeline{
                         //}
                         }               
                     }                
-                 }
+                 }*/
             }            
         }   
         stage('Test'){
