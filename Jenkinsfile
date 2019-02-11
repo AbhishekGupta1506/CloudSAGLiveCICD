@@ -156,7 +156,7 @@ pipeline{
                         echo 'deploy assets cloud LAR'
                         script{                        
                             //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
-                            sshagent(credentials : ['AbhishekGupta1506GITVMMOSY07']) {    
+                            sshagent(credentials : ['cloudUsernamePassword']) {    
                                 deployLatestBuildAssetAndConfigToCloudGIT "siqa1"
                                 //}
                             }               
