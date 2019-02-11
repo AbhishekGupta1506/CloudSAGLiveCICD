@@ -70,15 +70,17 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                     echo 'copy the IS build configuration'
                     dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/CC"){
                         bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-OSGI-IS_default* .'	
-                    }                                       
-                    bat 'git status'
-                    bat 'git remote show origin'
-                    bat 'git show-ref'
-                    bat 'git config --global user.email "abhishekgupta1506@gmail.com"'
-                    bat 'git add .'
-                    bat 'git commit -am "pushing the latest IS build"' 
-                    echo "pushing assets/config to ${ISSolName}" 
-                    bat 'git push origin HEAD:master'  
+                    }
+                    sshagent(credentials : ['cloudUsernamePassword']) {
+                        bat 'git status'
+                        bat 'git remote show origin'
+                        bat 'git show-ref'
+                        bat 'git config --global user.email "abg@softwareag.com"'
+                        bat 'git add .'
+                        bat 'git commit -am "pushing the latest IS build"' 
+                        echo "pushing assets/config to ${ISSolName}" 
+                        bat 'git push origin HEAD:master'  
+                    }
                 }
             }
         }
