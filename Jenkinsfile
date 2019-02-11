@@ -71,16 +71,14 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                     dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/CC"){
                         bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-OSGI-IS_default* .'	
                     }
-                    sshagent(credentials : ['cloudUsernamePassword']) {
                         bat 'git status'
                         bat 'git remote show origin'
                         bat 'git show-ref'
-                        bat 'git config --global user.email "abg@softwareag.com"'
+                       // bat 'git config --global user.email "abg@softwareag.com"'
                         bat 'git add .'
                         bat 'git commit -am "pushing the latest IS build"' 
                         echo "pushing assets/config to ${ISSolName}" 
                         bat 'git push origin HEAD:master'  
-                    }
                 }
             }
         }
@@ -155,12 +153,14 @@ pipeline{
             parallel{
                 stage('Tenant1'){
                     steps{
-                    echo 'deploy assets cloud LAR'
-                    script{                        
-                        //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
-                        deployLatestBuildAssetAndConfigToCloudGIT "siqa1"
-                        //}
-                        }               
+                        echo 'deploy assets cloud LAR'
+                        script{                        
+                            //dir('C:/CloudTransformation/SAGLiveWorkspace/CloudGIT'){
+                            sshagent(credentials : ['AbhishekGupta1506GITVMMOSY07']) {    
+                                deployLatestBuildAssetAndConfigToCloudGIT "siqa1"
+                                //}
+                            }               
+                        }
                     }
                 }
 
