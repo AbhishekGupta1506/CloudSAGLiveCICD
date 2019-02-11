@@ -62,7 +62,7 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                     }
                     echo 'copy the IS build assets'
                     dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/IS"){
-                        bat 'copy -r C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\IS\\. .'
+                        bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\IS\\. .'
                     }
                     if (!fileExists('CC')) {
                         bat 'mkdir CC'
