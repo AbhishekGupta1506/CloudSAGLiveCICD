@@ -36,7 +36,8 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                         }
                         echo 'copy the UM build configuration'
                         dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${UMSolName}/CC"){
-                            bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-Universal-Messaging-umserver* .'	
+                            bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-Universal-Messaging-umserver.zip .'
+                            bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\cloud-acdl-var-sub\\localhost-Universal-Messaging-umserver.acdl .'	
                         }                                       
                         bat 'git status'
                         bat 'git remote show origin'
@@ -69,7 +70,8 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                     }
                     echo 'copy the IS build configuration'
                     dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/CC"){
-                        bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-OSGI-IS_default* .'	
+                        bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-OSGI-IS_default.zip .'	
+                        bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\cloud-acdl-var-sub\\localhost-OSGI-IS_default.acdl .'
                     }
                         bat 'git status'
                         bat 'git remote show origin'
@@ -145,6 +147,8 @@ pipeline{
                         bat 'rd /s /q CloudGIT'
                     }
                     bat 'mkdir CloudGIT'
+
+
 
                 }
             }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<asset_composite name="localhost-Universal-Messaging-umserver" displayName="localhost-Universal-Messaging-umserver" targetNamespace="http://namespaces.softwareag.com/webMethods/CC" xmlns="http://namespaces.softwareag.com/acdl/1.0" xmlns:EDA="http://namespaces.softwareag.com/webMethods/EDA" xmlns:MWS="http://namespaces.softwareag.com/webMethods/MWS" xmlns:IS="http://namespaces.softwareag.com/webMethods/IS" xmlns:APIPORTAL="http://namespaces.softwareag.com/webMethods/APIPORTAL" xmlns:AgileApps="http://namespaces.softwareag.com/webMethods/AgileApps" xmlns:BROKER="http://namespaces.softwareag.com/webMethods/BROKER" xmlns:implDetails="http://namespaces.softwareag.com/acdl/implDetails" xmlns:UniversalMessaging="http://namespaces.softwareag.com/webMethods/UniversalMessaging" xmlns:TN="http://namespaces.softwareag.com/webMethods/TN" xmlns:RULES="http://namespaces.softwareag.com/webMethods/RULES" xmlns:BPM="http://namespaces.softwareag.com/webMethods/BPM" xmlns:Optimize="http://namespaces.softwareag.com/webMethods/Optimize">
+    <buildInfo name="BuildVersion" value="1"/>
+    <buildInfo name="build.timestamp" value="2019-02-13T22:41:55"/>
+    <buildInfo name="productId" value="NUMRealmServer"/>
+    <property name="universal-messaging-umserver.um-jndi-dest-queuemixed.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-queuemixed.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-topicmixed.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-topicmixed.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-queuepersistent.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-queuepersistent.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-cf-qcf.url" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-cf-qcf.url">
+        <value>NSP://UNUSED:0</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-topicoff-heap.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-topicoff-heap.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-topicsimple.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-topicsimple.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-cf-cfshareddurable.url" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-cf-cfshareddurable.url">
+        <value>NSP://UNUSED:0</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-topicreliable.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-topicreliable.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-jndiqueue.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-jndiqueue.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-cf-tcfnonshareddurable.url" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-cf-tcfnonshareddurable.url">
+        <value>NSP://UNUSED:0</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-queuereliable.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-queuereliable.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-cf-tcfshareddurable.url" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-cf-tcfshareddurable.url">
+        <value>NSP://UNUSED:0</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-jnditopic_sc-7279.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-jnditopic_sc-7279.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-jndiqueue_sc-7279.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-jndiqueue_sc-7279.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-queuesimple.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-queuesimple.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.common-local-users-administrator.password" many="false" isSecure="true" displayName="universal-messaging-umserver.common-local-users-administrator.password">
+        <value>''</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-queuepaged.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-queuepaged.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-queueoff-heap.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-queueoff-heap.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-cf-xacf.url" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-cf-xacf.url">
+        <value>NSP://UNUSED:0</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-topicpaged.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-topicpaged.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-topicpersistent.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-topicpersistent.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-cf-eventfactory.url" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-cf-eventfactory.url">
+        <value>NSP://UNUSED:0</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-queuetransient.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-queuetransient.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-jnditopic.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-jnditopic.autocreatedest">
+        <value>true</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-cf-cfnonshareddurable.url" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-cf-cfnonshareddurable.url">
+        <value>NSP://UNUSED:0</value>
+    </property>
+    <property name="universal-messaging-umserver.um-jndi-dest-topictransient.autocreatedest" many="false" isSecure="false" displayName="universal-messaging-umserver.um-jndi-dest-topictransient.autocreatedest">
+        <value>true</value>
+    </property>
+</asset_composite>
