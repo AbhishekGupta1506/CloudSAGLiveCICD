@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <asset_composite name="localhost-OSGI-IS_default" displayName="localhost-OSGI-IS_default" targetNamespace="http://namespaces.softwareag.com/webMethods/CC" xmlns="http://namespaces.softwareag.com/acdl/1.0" xmlns:EDA="http://namespaces.softwareag.com/webMethods/EDA" xmlns:MWS="http://namespaces.softwareag.com/webMethods/MWS" xmlns:IS="http://namespaces.softwareag.com/webMethods/IS" xmlns:APIPORTAL="http://namespaces.softwareag.com/webMethods/APIPORTAL" xmlns:AgileApps="http://namespaces.softwareag.com/webMethods/AgileApps" xmlns:BROKER="http://namespaces.softwareag.com/webMethods/BROKER" xmlns:implDetails="http://namespaces.softwareag.com/acdl/implDetails" xmlns:UniversalMessaging="http://namespaces.softwareag.com/webMethods/UniversalMessaging" xmlns:TN="http://namespaces.softwareag.com/webMethods/TN" xmlns:RULES="http://namespaces.softwareag.com/webMethods/RULES" xmlns:BPM="http://namespaces.softwareag.com/webMethods/BPM" xmlns:Optimize="http://namespaces.softwareag.com/webMethods/Optimize">
     <buildInfo name="BuildVersion" value="1"/>
-    <buildInfo name="build.timestamp" value="2019-02-13T23:49:29"/>
+    <buildInfo name="build.timestamp" value="2019-02-14T03:28:58"/>
     <buildInfo name="productId" value="integrationServer"/>
-    <property name="integrationserver-default.common-truststores_default_wmcloud_truststore.truststore.location" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_default_wmcloud_truststore.truststore.location">
-        <value>packages\WmCloud\config\wmcloud_truststore.jks</value>
-    </property>
     <property name="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.auth.user" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.auth.user">
         <value>${UM_USER}</value>
-    </property>
-    <property name="integrationserver-default.common-keystores_default_is_keystore.keystore.type" many="false" isSecure="false" displayName="integrationserver-default.common-keystores_default_is_keystore.keystore.type">
-        <value>JKS</value>
     </property>
     <property name="integrationserver-default.is-consumer-endpoints-http-webservicesconsumerhttp01.consumer.transport.protocol" many="false" isSecure="false" displayName="integrationserver-default.is-consumer-endpoints-http-webservicesconsumerhttp01.consumer.transport.protocol">
         <value>HTTP</value>
@@ -33,35 +27,26 @@
     <property name="integrationserver-default.common-jms-tcfnonshareddurable_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-tcfnonshareddurable_is_jms_connection.jms.password">
         <value>${UM_PASSWORD}</value>
     </property>
+    <property name="integrationserver-default.common-local-users-manoj.password" many="false" isSecure="false" displayName="integrationserver-default.common-local-users-manoj.password">
+        <value>Passw0rd@1234</value>
+    </property>
     <property name="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.provider.wssecurity.maxskew" many="false" isSecure="false" displayName="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.provider.wssecurity.maxskew">
         <value>'60'</value>
     </property>
     <property name="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.provider.transport.port" many="false" isSecure="false" displayName="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.provider.transport.port">
         <value>'5555'</value>
     </property>
-    <property name="integrationserver-default.common-local-users-manoj.password" many="false" isSecure="false" displayName="integrationserver-default.common-local-users-manoj.password">
-        <value>Passw0rd@1234</value>
-    </property>
     <property name="integrationserver-default.is-resources.storesettings.xarecoverystore.initialstoresize" many="false" isSecure="false" displayName="integrationserver-default.is-resources.storesettings.xarecoverystore.initialstoresize">
         <value>'10'</value>
     </property>
-    <property name="integrationserver-default.common-keystores_is_um_keystore.keystore.password" many="false" isSecure="true" displayName="integrationserver-default.common-keystores_is_um_keystore.keystore.password">
-        <value>'{AES/CBC/PKCS5Padding}{kKQo8H4LH+V1nm7kk5r7CWiW4zAAUtb1KlJpwv7/if8=}{GIbHJXcijUMyWqmzqLHjCQ==}hErA9c3MaNMsLsuPL8sSXQ=='</value>
-    </property>
     <property name="integrationserver-default.common-keystores_cloudmigration_keystore.keystore.location" many="false" isSecure="false" displayName="integrationserver-default.common-keystores_cloudmigration_keystore.keystore.location">
-        <value>packages/keystorelocation/resources/CloudMigration_truststore.jks</value>
+        <value>packages/keystorelocation/resources/CloudMigration_keystore.jks</value>
     </property>
     <property name="integrationserver-default.is-provider-endpoints-https-webservicesproviderhttps01.provider.wssecurity.timestampprecision" many="false" isSecure="false" displayName="integrationserver-default.is-provider-endpoints-https-webservicesproviderhttps01.provider.wssecurity.timestampprecision">
         <value>milliseconds</value>
     </property>
     <property name="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.user" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.user">
         <value>${UM_USER}</value>
-    </property>
-    <property name="integrationserver-default.common-truststores_default_wmcloud_truststore.truststore.password" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_default_wmcloud_truststore.truststore.password">
-        <value></value>
-    </property>
-    <property name="integrationserver-default.common-keystores_default_is_keystore.keystore.location" many="false" isSecure="false" displayName="integrationserver-default.common-keystores_default_is_keystore.keystore.location">
-        <value>C:\SoftwareAG103\common\conf\keystore.jks</value>
     </property>
     <property name="integrationserver-default.is-provider-endpoints-https-webservicesproviderhttps01.provider.transport.protocol" many="false" isSecure="false" displayName="integrationserver-default.is-provider-endpoints-https-webservicesproviderhttps01.provider.transport.protocol">
         <value>HTTPS</value>
@@ -102,9 +87,6 @@
     <property name="integrationserver-default.common-jms-tcfshareddurable_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-tcfshareddurable_is_jms_connection.jms.password">
         <value>${UM_PASSWORD}</value>
     </property>
-    <property name="integrationserver-default.common-keystores_default_is_keystore.keystore.password" many="false" isSecure="true" displayName="integrationserver-default.common-keystores_default_is_keystore.keystore.password">
-        <value>'{AES/CBC/PKCS5Padding}{fMwBD6CDkq4KB4hhKfjPwF9demHLePQeMP/wBa+IFao=}{0v/WW+OCjIyKCBIVdVqr/A==}zVYtxWdeduU9FSmSEBqPYg=='</value>
-    </property>
     <property name="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.url">
         <value>${UM_URL}</value>
     </property>
@@ -132,14 +114,8 @@
     <property name="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.url">
         <value>${UM_URL}</value>
     </property>
-    <property name="integrationserver-default.common-keystores_is_um_keystore.keystore.type" many="false" isSecure="false" displayName="integrationserver-default.common-keystores_is_um_keystore.keystore.type">
-        <value>JKS</value>
-    </property>
     <property name="integrationserver-default.common-jms-qcf_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-qcf_is_jms_connection.jms.password">
         <value>${UM_PASSWORD}</value>
-    </property>
-    <property name="integrationserver-default.common-truststores_default_wmcloud_truststore.truststore.type" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_default_wmcloud_truststore.truststore.type">
-        <value>JKS</value>
     </property>
     <property name="integrationserver-default.common-local-users-userdev.password" many="false" isSecure="false" displayName="integrationserver-default.common-local-users-userdev.password">
         <value>Passw0rd@1234</value>
@@ -164,9 +140,6 @@
     </property>
     <property name="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.url">
         <value>${UM_URL}</value>
-    </property>
-    <property name="integrationserver-default.common-truststores_is_um_truststore.truststore.location" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_is_um_truststore.truststore.location">
-        <value>C:\SoftwareAG103\UniversalMessaging\server\umserver\bin\nirvanacacerts.jks</value>
     </property>
     <property name="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.user">
         <value>${UM_USER}</value>
@@ -201,17 +174,11 @@
     <property name="integrationserver-default.is-resources.storesettings.xarecoverystore.storelocation" many="false" isSecure="false" displayName="integrationserver-default.is-resources.storesettings.xarecoverystore.storelocation">
         <value>XAStore</value>
     </property>
-    <property name="integrationserver-default.common-truststores_is_um_truststore.truststore.password" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_is_um_truststore.truststore.password">
-        <value></value>
-    </property>
-    <property name="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.@alias" many="false" isSecure="false" displayName="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.@alias">
-        <value>WebServicesProviderHTTP01</value>
-    </property>
     <property name="integrationserver-default.common-jms-cfnonshareddurable_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-cfnonshareddurable_is_jms_connection.jms.user">
         <value>${UM_USER}</value>
     </property>
-    <property name="integrationserver-default.common-truststores_is_um_truststore.truststore.type" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_is_um_truststore.truststore.type">
-        <value>JKS</value>
+    <property name="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.@alias" many="false" isSecure="false" displayName="integrationserver-default.is-provider-endpoints-http-webservicesproviderhttp01.@alias">
+        <value>WebServicesProviderHTTP01</value>
     </property>
     <property name="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.user" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.user">
         <value>${UM_USER}</value>
@@ -228,14 +195,8 @@
     <property name="integrationserver-default.common-local-users-abg.password" many="false" isSecure="false" displayName="integrationserver-default.common-local-users-abg.password">
         <value>Passw0rd@1234</value>
     </property>
-    <property name="integrationserver-default.common-truststores_default_is_truststore.truststore.location" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_default_is_truststore.truststore.location">
-        <value>C:\SoftwareAG912\common\conf\platform_truststore.jks</value>
-    </property>
     <property name="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.auth.password" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.auth.password">
         <value>${UM_PASSWORD}</value>
-    </property>
-    <property name="integrationserver-default.common-truststores_default_is_truststore.truststore.password" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_default_is_truststore.truststore.password">
-        <value></value>
     </property>
     <property name="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.password">
         <value>${UM_PASSWORD}</value>
@@ -269,12 +230,6 @@
     </property>
     <property name="integrationserver-default.is-consumer-endpoints-http-webservicesconsumerhttp01.consumer.transport.auth.@type" many="false" isSecure="false" displayName="integrationserver-default.is-consumer-endpoints-http-webservicesconsumerhttp01.consumer.transport.auth.@type">
         <value>Basic</value>
-    </property>
-    <property name="integrationserver-default.common-truststores_default_is_truststore.truststore.type" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_default_is_truststore.truststore.type">
-        <value>JKS</value>
-    </property>
-    <property name="integrationserver-default.common-keystores_default_is_keystore.keystore.key.password" many="false" isSecure="true" displayName="integrationserver-default.common-keystores_default_is_keystore.keystore.key.password">
-        <value>'{AES/CBC/PKCS5Padding}{lCuMeqcCQK/lc2Uui1/zFfaJ9fivxTdw5ueCQF8ZqTI=}{otmNjSTJOAZNhUp3Kfs4Hw==}+wsRF4PFtkN24SdwOrcxZQ=='</value>
     </property>
     <property name="integrationserver-default.is-consumer-endpoints-https-webservicesconsumerhttps01.consumer.transport.auth.@type" many="false" isSecure="false" displayName="integrationserver-default.is-consumer-endpoints-https-webservicesconsumerhttps01.consumer.transport.auth.@type">
         <value>Basic</value>
@@ -324,9 +279,6 @@
     <property name="integrationserver-default.is-consumer-endpoints-https-webservicesconsumerhttps01.consumer.transport.port" many="false" isSecure="false" displayName="integrationserver-default.is-consumer-endpoints-https-webservicesconsumerhttps01.consumer.transport.port">
         <value>'5557'</value>
     </property>
-    <property name="integrationserver-default.common-keystores_is_um_keystore.keystore.key.password" many="false" isSecure="true" displayName="integrationserver-default.common-keystores_is_um_keystore.keystore.key.password">
-        <value>'{AES/CBC/PKCS5Padding}{+TBmexB2jURFhrfaXMI6nQyUD6PrNfwMsNHsw/9V1l8=}{MKVMrBOlVo2jv/8ymqjbNg==}BXpQGaXmrpRc+aOQundndg=='</value>
-    </property>
     <property name="integrationserver-default.common-truststores_cloudmigration_truststore.truststore.location" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_cloudmigration_truststore.truststore.location">
         <value>packages/keystorelocation/resources/CloudMigration_truststore.jks</value>
     </property>
@@ -341,9 +293,6 @@
     </property>
     <property name="integrationserver-default.is-resources.resources.session.sessiontimeout" many="false" isSecure="false" displayName="integrationserver-default.is-resources.resources.session.sessiontimeout">
         <value>'10'</value>
-    </property>
-    <property name="integrationserver-default.common-keystores_is_um_keystore.keystore.location" many="false" isSecure="false" displayName="integrationserver-default.common-keystores_is_um_keystore.keystore.location">
-        <value>C:\SoftwareAG103\UniversalMessaging\server\umserver\bin\client.jks</value>
     </property>
     <property name="integrationserver-default.common-vars-cloudmigration.variable.$" many="false" isSecure="false" displayName="integrationserver-default.common-vars-cloudmigration.variable.$">
         <value>'Hello Cloud Migration: Global variable'</value>
