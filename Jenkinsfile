@@ -72,6 +72,12 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                     dir("C:/CloudTransformation/SAGLiveWorkspace/CloudGIT/${tenantName}-${ISSolName}/CC"){
                         bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-OSGI-IS_default.zip .'	
                         bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\cloud-acdl-var-sub\\localhost-OSGI-IS_default.acdl .'
+                        if(i != 1){
+                            echo 'pusing the IS-UM alias'
+                            bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\CloudAssetsBuild\\CC\\localhost-OSGI-IS_default-UM.zip .'	
+                            bat 'copy C:\\CloudTransformation\\SAGLiveWorkspace\\cloud-acdl-var-sub\\localhost-OSGI-IS_default-UM.acdl .'
+
+                        }
                     }
                         bat 'git status'
                         bat 'git remote show origin'

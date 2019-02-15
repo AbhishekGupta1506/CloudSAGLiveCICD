@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<asset_composite name="localhost-OSGI-IS_default-UM" displayName="localhost-OSGI-IS_default-UM" targetNamespace="http://namespaces.softwareag.com/webMethods/CC" xmlns="http://namespaces.softwareag.com/acdl/1.0" xmlns:EDA="http://namespaces.softwareag.com/webMethods/EDA" xmlns:MWS="http://namespaces.softwareag.com/webMethods/MWS" xmlns:IS="http://namespaces.softwareag.com/webMethods/IS" xmlns:APIPORTAL="http://namespaces.softwareag.com/webMethods/APIPORTAL" xmlns:AgileApps="http://namespaces.softwareag.com/webMethods/AgileApps" xmlns:BROKER="http://namespaces.softwareag.com/webMethods/BROKER" xmlns:implDetails="http://namespaces.softwareag.com/acdl/implDetails" xmlns:UniversalMessaging="http://namespaces.softwareag.com/webMethods/UniversalMessaging" xmlns:TN="http://namespaces.softwareag.com/webMethods/TN" xmlns:RULES="http://namespaces.softwareag.com/webMethods/RULES" xmlns:BPM="http://namespaces.softwareag.com/webMethods/BPM" xmlns:Optimize="http://namespaces.softwareag.com/webMethods/Optimize">
+    <buildInfo name="BuildVersion" value="1"/>
+    <buildInfo name="build.timestamp" value="2019-02-15T00:01:20"/>
+    <buildInfo name="productId" value="integrationServer"/>
+    <property name="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.user" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.password" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.url">
+        <value>${UM_URL}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.password" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.auth.user" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.auth.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.auth.user" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.auth.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-cfnonshareddurable_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-cfnonshareddurable_is_jms_connection.jms.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-tcfshareddurable_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-tcfshareddurable_is_jms_connection.jms.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.url">
+        <value>${UM_URL}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.user" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-tcfnonshareddurable_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-tcfnonshareddurable_is_jms_connection.jms.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-xacf_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-xacf_is_jms_connection.jms.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.auth.password" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.auth.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.url">
+        <value>${UM_URL}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.password" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-tcfshareddurable_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-tcfshareddurable_is_jms_connection.jms.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.url">
+        <value>${UM_URL}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhp.jndi.provider.url">
+        <value>${UM_URL}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.auth.password" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-basic_is_jms_connection.messaging.provider.auth.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nsps.jndi.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nsps.jndi.provider.url">
+        <value>${UM_URL}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.auth.user" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_nhps_is_um_connection.messaging.provider.auth.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.auth.password" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-secure_is_um_connection.messaging.provider.auth.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nhps.jndi.provider.url">
+        <value>${UM_URL}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nsps.jndi.provider.user" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nsps.jndi.provider.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-tcfnonshareddurable_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-tcfnonshareddurable_is_jms_connection.jms.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-qcf_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-qcf_is_jms_connection.jms.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-xacf_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-xacf_is_jms_connection.jms.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.user" many="false" isSecure="false" displayName="integrationserver-default.common-jms-cfshareddurable_is_jms_connection.jms.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nsps.jndi.provider.password" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nsps.jndi.provider.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.user" many="false" isSecure="false" displayName="integrationserver-default.common-jndi-jndi_nsp.jndi.provider.user">
+        <value>${UM_USER}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-cfnonshareddurable_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-cfnonshareddurable_is_jms_connection.jms.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+    <property name="integrationserver-default.common-jms-qcf_is_jms_connection.jms.password" many="false" isSecure="false" displayName="integrationserver-default.common-jms-qcf_is_jms_connection.jms.password">
+        <value>${UM_PASSWORD}</value>
+    </property>
+</asset_composite>
