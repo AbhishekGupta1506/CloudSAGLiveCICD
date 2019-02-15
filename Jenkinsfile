@@ -47,6 +47,7 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                         echo "pushing assets/config to ${UMSolName}" 
                         bat 'git push origin HEAD:master'  
                     }
+                    sleep 60
                 }
                 bat "echo ${ISSolName}"                            
                 bat "mkdir ${tenantName}-${ISSolName}"
