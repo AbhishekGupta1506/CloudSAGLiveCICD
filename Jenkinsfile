@@ -84,6 +84,7 @@ def deployLatestBuildAssetAndConfigToCloudGIT(tenantName){
                         bat 'git remote show origin'
                         bat 'git show-ref'
                         bat 'git config --global user.email "abg@softwareag.com"'
+                        bat 'git config --global user.name "abg@softwareag.com"'
                         bat 'git add .'
                         bat 'git commit -am "pushing the latest IS build"' 
                         echo "pushing assets/config to ${ISSolName}" 
