@@ -1,0 +1,44 @@
+{
+	"integration": {
+		"landscapeDefinition": {
+			"solutionName": "Sol1",
+			"description": "",
+			"createdID": "",
+			"dateCreated": "",
+			"modifiedID": "",
+			"dateModified": "",
+			"solutionType": 1,
+			"productDefinitions": {
+				"IS": [{
+					"name": "Sol1IS1",
+					"productType": "IS",
+					"id": "IS_1",
+					"replicaCount": 1,
+					"isClustered": false,
+					"enabled": true,
+					"image": {
+						"tag": "10.3"
+					},
+					"dependencies": ["DB"],
+					"labels": {
+						"app": "frontend"
+					},
+					"exposedServices": [],
+					"resources": {
+						"limits": {
+							"cpu": "1",
+							"memory": "2"
+						}
+					},
+					"extraParameters": {
+						"cordinates": {
+							"row": 5,
+							"column": 3
+						}
+					},
+					"clusterType": null
+				}]
+			}
+		}
+	}
+} 
