@@ -121,7 +121,7 @@ createSolution () {
 
 
 
-if [ "$#" -ne "4" ]; then
+if [ "$#" -ne "3" ]; then
 	echo "Pass all the variable"
 	exit 1
 fi	
@@ -129,7 +129,6 @@ fi
 URL=$1
 UserName=$2
 Password=$3
-Route=$4
 
 echo "First URL parameter:  " $1
 echo "Second UserName parameter: " $2
