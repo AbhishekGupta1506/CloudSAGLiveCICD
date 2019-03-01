@@ -35,8 +35,8 @@ loginToIC () {
 			fi
 			if [[ "$f" == *"route"* ]]; then
 				echo -e "******************************************************"
-				RouteID=`echo $f |  cut -d$' ' -f2`
-				echo $RouteID
+				Route=`echo $f |  cut -d$' ' -f2`
+				echo $Route
 				echo -e "******************************************************"
 			fi
 		done < login.txt
@@ -48,7 +48,7 @@ loginToIC () {
 }
 
 ISSessionActive () {
-	curl -vi --cookie "UserType=Platform; lang=en; route=$Route; $SessionID login=" GET "https://$URL/integration/isSessionActive" > csrfToken.txt
+	curl -vi --cookie "UserType=Platform; lang=en; $Route $SessionID login=" GET "https://$URL/integration/isSessionActive" > csrfToken.txt
 	ResCo1=`cat csrfToken.txt | head -n 1 | cut -d $' ' -f2`
 	echo $ResCo1
 	if [ "$ResCo1" = "$ResponseSuccessCode" ]; then
@@ -63,7 +63,7 @@ ISSessionActive () {
 }
 
 getSolutions () {
-	curl -vi -H "Cookie: UserType=Platform; lang=en; route=$Route; userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" GET https://$URL/integration/rest/landscapes > landscapes.txt
+	curl -vi -H "Cookie: UserType=Platform; lang=en; $Route userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" GET https://$URL/integration/rest/landscapes > landscapes.txt
 	ResCo3=`cat landscapes.txt | head -n 1 | cut -d ' ' -f2`
 	if [ "$ResCo3" = "$ResponseSuccessCode" ]; then		
 		SolutionExist=`cat landscapes.txt | grep -i "Sol1" | wc -l` 
@@ -85,7 +85,7 @@ deleteSolution () {
 	getSolutions
 	getSolutionsReturnStatus=$?
 	if [ "$getSolutionsReturnStatus" = "1" ]; then
-		curl -vi -H "Cookie: UserType=Platform; lang=en; route=$Route; userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" -X DELETE https://$URL/integration/rest/landscapes/Sol1 > deleteSolution.txt
+		curl -vi -H "Cookie: UserType=Platform; lang=en; $Route userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" -X DELETE https://$URL/integration/rest/landscapes/Sol1 > deleteSolution.txt
 		ResCo4=`cat deleteSolution.txt | head -n 1 | cut -d ' ' -f2`
 		if [ "$ResCo4" = "$ResponseSuccessCode" ]; then
 			echo "***************************************************"
@@ -102,7 +102,7 @@ createSolution () {
 	getSolutions
 	getSolutionsReturnStatus=$?
 	if [ "$getSolutionsReturnStatus" = "0" ]; then
-		curl -vi -H "Accept: application/json" -H "Content-Type: application/json" -H "x-csrf-token: $CSRFToken" -H "Cookie: UserType=Platform; route=$Route; $SessionID login=; lang=en" --data @createsol.json POST https://$URL/integration/rest/landscapes/Sol1 -D SolutionCreationResponse.txt
+		curl -vi -H "Accept: application/json" -H "Content-Type: application/json" -H "x-csrf-token: $CSRFToken" -H "Cookie: UserType=Platform; $Route $SessionID login=; lang=en" --data @createsol.json POST https://$URL/integration/rest/landscapes/Sol1 -D SolutionCreationResponse.txt
 		ResCo2=`cat SolutionCreationResponse.txt | head -n 1 | cut -d $' ' -f2`
 		if [ "$ResCo2" = "$SolutionCreationSuccessCode" ]; then
 			echo -e "**************************************************"
