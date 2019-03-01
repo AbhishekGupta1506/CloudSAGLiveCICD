@@ -33,6 +33,12 @@ loginToIC () {
 				echo $SessionID
 				echo -e "******************************************************"
 			fi
+			if [[ "$f" == *"route"* ]]; then
+				echo -e "******************************************************"
+				RouteID=`echo $f |  cut -d$' ' -f2`
+				echo $RouteID
+				echo -e "******************************************************"
+			fi
 		done < login.txt
 	else
 		echo -e "##########Login to IC failed with STATUS CODE: $ResCo##########"
