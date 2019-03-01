@@ -4,6 +4,9 @@
 # Variable  Declaration
 ###############################################################################
 
+URL=""
+UserName=""
+Password=""
 SessionID=""
 CSRFToken=""
 loginSuccessCode="302"
@@ -16,7 +19,7 @@ Declare -i SolutionExist
 ###############################################################################
 
 loginToIC () {
-	curl -v -d "username=abg%40softwareag.com" -d "password=Passw0rd%4054321" -d "op=Log%20in" --keepalive-time 600 POST https://siqa2.saglive.com/integration/login -D login.txt
+	curl -v -d "username=$UserName" -d "password=$Password" -d "op=Log%20in" --keepalive-time 600 POST https://$URL/integration/login -D login.txt
 
 	ResCo=`cat login.txt | head -n 1 | cut -d $' ' -f2`
 	JSession="JSESSIONID"
@@ -38,7 +41,7 @@ loginToIC () {
 }
 
 ISSessionActive () {
-	curl -vi --cookie "UserType=Platform; lang=en; route=lj-01; $SessionID login=" GET "https://siqa2.saglive.com/integration/isSessionActive" > csrfToken.txt
+	curl -vi --cookie "UserType=Platform; lang=en; route=lj-01; $SessionID login=" GET "https://$URL/integration/isSessionActive" > csrfToken.txt
 	ResCo1=`cat csrfToken.txt | head -n 1 | cut -d $' ' -f2`
 	echo $ResCo1
 	if [ "$ResCo1" = "$ResponseSuccessCode" ]; then
@@ -53,7 +56,7 @@ ISSessionActive () {
 }
 
 getSolutions () {
-	curl -vi -H "Cookie: UserType=Platform; lang=en; route=lj-01; userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" GET https://siqa2.saglive.com/integration/rest/landscapes > landscapes.txt
+	curl -vi -H "Cookie: UserType=Platform; lang=en; route=lj-01; userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" GET https://$URL/integration/rest/landscapes > landscapes.txt
 	ResCo3=`cat landscapes.txt | head -n 1 | cut -d ' ' -f2`
 	if [ "$ResCo3" = "$ResponseSuccessCode" ]; then		
 		SolutionExist=`cat landscapes.txt | grep -i "Sol1" | wc -l` 
@@ -75,7 +78,7 @@ deleteSolution () {
 	getSolutions
 	getSolutionsReturnStatus=$?
 	if [ "$getSolutionsReturnStatus" = "1" ]; then
-		curl -vi -H "Cookie: UserType=Platform; lang=en; route=lj-01; userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" -X DELETE https://siqa2.saglive.com/integration/rest/landscapes/Sol1 > deleteSolution.txt
+		curl -vi -H "Cookie: UserType=Platform; lang=en; route=lj-01; userId=-2; $SessionID login=" -H "x-csrf-token: $CSRFToken" -X DELETE https://$URL/integration/rest/landscapes/Sol1 > deleteSolution.txt
 		ResCo4=`cat deleteSolution.txt | head -n 1 | cut -d ' ' -f2`
 		if [ "$ResCo4" = "$ResponseSuccessCode" ]; then
 			echo "***************************************************"
@@ -92,7 +95,7 @@ createSolution () {
 	getSolutions
 	getSolutionsReturnStatus=$?
 	if [ "$getSolutionsReturnStatus" = "0" ]; then
-		curl -vi -H "Accept: application/json" -H "Content-Type: application/json" -H "x-csrf-token: $CSRFToken" -H "Cookie: UserType=Platform; route=lj-01; $SessionID login=; lang=en" --data @createsol.json POST https://siqa2.saglive.com/integration/rest/landscapes/Sol1 -D SolutionCreationResponse.txt
+		curl -vi -H "Accept: application/json" -H "Content-Type: application/json" -H "x-csrf-token: $CSRFToken" -H "Cookie: UserType=Platform; route=lj-01; $SessionID login=; lang=en" --data @createsol.json POST https://$URL/integration/rest/landscapes/Sol1 -D SolutionCreationResponse.txt
 		ResCo2=`cat SolutionCreationResponse.txt | head -n 1 | cut -d $' ' -f2`
 		if [ "$ResCo2" = "$SolutionCreationSuccessCode" ]; then
 			echo -e "**************************************************"
@@ -108,6 +111,21 @@ createSolution () {
 ###############################################################################
 # Main Declaration
 ###############################################################################
+
+
+
+if [ "$#" -ne "3" ]; then
+	echo "Pass all the variable"
+	exit 1
+fi	
+
+URL=$1
+UserName=$2
+Password=$3
+
+echo "First URL parameter:  " $1
+echo "Second UserName parameter: " $2
+echo "Third Password parameter: ********* " 
 
 echo -e "##########Login to IC initialized##########"
 loginToIC
