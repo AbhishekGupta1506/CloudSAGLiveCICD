@@ -57,7 +57,7 @@ ISSessionActive () {
 		echo  "CSRFTOken: " $CSRFToken
 		echo -e "*****************************************************"
 	else
-		echo -e "##########Collecting CSRF Toekn failed with STATUS CODE: $ResCo1##########"
+		echo -e "##########Collecting CSRF Token failed with STATUS CODE: $ResCo1##########"
 		exit 1
 	fi
 }
@@ -103,6 +103,7 @@ createSolution () {
 	getSolutionsReturnStatus=$?
 	if [ "$getSolutionsReturnStatus" = "0" ]; then
 		curl -vi -H "Accept: application/json" -H "Content-Type: application/json" -H "x-csrf-token: $CSRFToken" -H "Cookie: UserType=Platform; $Route $SessionID login=; lang=en" --data @createsol.json POST https://$URL/integration/rest/landscapes/Sol1 -D SolutionCreationResponse.txt
+		sleep 300
 		ResCo2=`cat SolutionCreationResponse.txt | head -n 1 | cut -d $' ' -f2`
 		if [ "$ResCo2" = "$SolutionCreationSuccessCode" ]; then
 			echo -e "**************************************************"
@@ -148,4 +149,4 @@ echo -e "##########Solution Deleted##########"
 
 echo -e "##########Solution Creation initialized##########"
 createSolution
-echo -e "##########Solution Creation Complated##########"
+echo -e "##########Solution Creation Completed##########"
